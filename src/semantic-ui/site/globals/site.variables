@@ -1,0 +1,6 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@defaultBorderRadius: 0px; 
+@primaryColor: #002f4e;
