@@ -1,1 +1,0 @@
-# shelfy-frontend
