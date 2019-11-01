@@ -1,23 +1,39 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../adapters/API";
+import {Card} from 'semantic-ui-react'
 
-export class brandsContainer extends Component {
-state = {
-    brands: []
-}
-componentDidMount() {
-    this.brands()
-}
-    brands = () => {
-        return API.getBrands().then(resp => this.setState({brands: resp}))
-    }
+const BrandsContainer = () => {
+  const [brands, setBrands] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
-    handleClick = e => 
-    {console.log(e)}
+  useEffect(() => {
+    API.getBrands().then(data => {
+      setBrands(data);
+      setSelectedBrand(data[0].id);
+    });
+  }, []);
 
-  render() {
-    return <div>{this.state.brands.map(brand => <ul onClick = {this.handleClick}>{brand.name}</ul>)}</div>;
+  const handleClick = e => {
+    setSelectedBrand(parseInt(e.target.id))
+    findBrand()
+    
   }
-}
 
-export default brandsContainer;
+  const findBrand = () => {
+    return (<Card>{brands.find(brand => brand.id === selectedBrand).name}</Card>)
+  }
+
+  return (
+    <div>
+
+      {brands.map(brand => (
+        <Card key={brand.id} onClick = {handleClick} id={brand.id} value={brand.name}>
+          {brand.name}
+        </Card>
+        
+      ))}
+    </div>
+  );
+};
+
+export default BrandsContainer;

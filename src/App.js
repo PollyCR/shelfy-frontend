@@ -18,6 +18,8 @@ class App extends React.Component {
       // console.log(user)
       if (user && user.errors) {
         this.props.history.push("/welcome");
+      } else if (user) {
+        this.props.history.push("/dashboard")
       }
     })
   }
