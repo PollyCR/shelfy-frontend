@@ -16,8 +16,7 @@ class App extends React.Component {
     API.validateUser().then(user => {
         this.setState({ user });
       // console.log(user)
-      if (user.errors) {
-        return <Message negative>{user.errors}</Message>
+      if (user && user.errors) {
         this.props.history.push("/welcome");
       }
     })

@@ -12,7 +12,7 @@ export class DashboardContainer extends Component {
         API.validateUser().then(user => {
             this.setState({ user });
           // console.log(user)
-          if (user.errors) {
+          if (user && user.errors) {
             this.props.history.push("/welcome");
           }         
         })
@@ -27,7 +27,7 @@ export class DashboardContainer extends Component {
     getRoutine = () => {
        let currentTime = this.getTime()
        if (currentTime >= 0 &&currentTime < 12) {
-    return <MorningRoutine getRoutine = {this.props.morningRoutine} user = {this.props.user}/> }
+    return <MorningRoutine user = {this.props.user}/> }
        else if (currentTime >=12) {
            return <EveningRoutine user = {this.props.user}/>}
        

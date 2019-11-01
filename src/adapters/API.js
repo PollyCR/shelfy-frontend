@@ -21,12 +21,11 @@ const handleError = () => {
   console.error("something went wrong");
 };
 
-const getMorningRoutine = user => {
-  fetch("http://localhost:3000/api/v1/morning_routines", {
-    method: "POST",
-    headers: headers(authHeader()),
-    body: JSON.stringify({ morning_routine: {user_id: user.id} })
-  }).then(handleServerResponse())
+const getMorningRoutineProducts = user => {
+  fetch("http://localhost:3000/api/v1/morning_routine_products", {
+    method: "GET",
+    headers: headers(authHeader())
+  }).then(resp => resp.json()).then(console.log)
 }
 
 const getEveningRoutine = user => {
@@ -128,7 +127,7 @@ export default {
   signup,
   validateUser,
   logout,
-  getMorningRoutine,
+  getMorningRoutineProducts,
   getEveningRoutine,
   getTreatmentRoutine
 };
