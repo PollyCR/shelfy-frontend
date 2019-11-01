@@ -30,6 +30,24 @@ export class DashboardContainer extends Component {
 this.props.history.push('/am')
     }
 
+    handleDiaryClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/diary')
+    }
+
+    handleListClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/list')
+    }
+
+    handleBrandsClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/brands')
+    }
+
     handlePmClick = e => {
         e.persist()
         e.preventDefault()
@@ -60,9 +78,9 @@ this.props.history.push('/treatment')
                 <Button className = "pm-routine-button" onClick = {this.handlePmClick}>PM</Button><br/>
                 <Button className = "treatment-routine-button" onClick = {this.handleTreatmentClick}>Treatment</Button><br/>
                 <Divider />
-                <Button className = "skin-diary-button">Skin Diary</Button><br/>
-                <Button className = "shopping-list-button">Shopping List</Button><br/>
-                <Button className = "brands-button">Brands</Button>
+                <Button className = "skin-diary-button" onClick = {this.handleDiaryClick}>Skin Diary</Button><br/>
+                <Button className = "shopping-list-button" onClick = {this.handleListClick}>Shopping List</Button><br/>
+                <Button className = "brands-button" onClick = {this.handleBrandsClick}>Brands</Button>
                 </Container>
             </div>
         );

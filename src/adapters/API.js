@@ -5,6 +5,7 @@ const BASE_URL = "http://localhost:3000/";
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
 const VALIDATE_URL = `${BASE_URL}api/v1/validate`;
+const BRANDS_URL = `${BASE_URL}api/v1/brands`
 
 
 const headers = (more = {}) => ({
@@ -99,8 +100,12 @@ const login = userDetails =>
     }).then(() => validateUser())
     .catch(handleError)
 
+const getBrands = () => fetch(BRANDS_URL, {
+    method: "GET", 
+    headers: headers()
+  }).then(resp => resp.json())
 
-
+  
 
 const validateUser = () =>
   fetch(VALIDATE_URL, {
@@ -129,12 +134,8 @@ export default {
   logout,
   getMorningRoutineProducts,
   getEveningRoutine,
-  getTreatmentRoutine
+  getTreatmentRoutine,
+  getBrands
 };
 
 
-fetch("http://localhost:3000/api/v1/morning_routine_products", {
-    method: "POST",
-    headers:   {"Content-Type": "application/json"},
-  Accept: "application/json", body: JSON.stringify({morning_routine_product: {morning_routine_id:"1", product_id:"1"}})
-  }).then(resp => resp.json()).then(console.log)

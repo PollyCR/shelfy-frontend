@@ -5,10 +5,25 @@ import DashboardContainer from '../containers/DashboardContainer'
 import amRoutineContainer from '../containers/amRoutineContainer'
 import pmRoutineContainer from '../containers/pmRoutineContainer'
 import treatmentRoutineContainer from '../containers/treatmentRoutineContainer'
+import skinDiaryContainer from '../containers/skinDiaryContainer'
+import brandsContainer from '../containers/brandsContainer'
+import shoppingListContainer from '../containers/shoppingListContainer'
 
 
 
 export const routes = [
+  {title: 'Skin diary',
+  path: "/diary",
+  component: skinDiaryContainer
+},
+{title: 'List',
+path: "/list",
+component: shoppingListContainer
+},
+{title: 'Brands you ♥️',
+path: "/brands",
+component: brandsContainer
+},
   {title: 'Morning Routine',
   path: "/am",
   component: amRoutineContainer
