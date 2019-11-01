@@ -24,6 +24,24 @@ export class DashboardContainer extends Component {
         return time
     }
 
+    handleAmClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/am')
+    }
+
+    handlePmClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/pm')
+    }
+
+    handleTreatmentClick = e => {
+        e.persist()
+        e.preventDefault()
+this.props.history.push('/treatment')
+    }
+
     getRoutine = () => {
        let currentTime = this.getTime()
        if (currentTime >= 0 &&currentTime < 12) {
@@ -38,9 +56,9 @@ export class DashboardContainer extends Component {
 <Link to="/logout"><Button>Logout</Button></Link>
 <div>{this.getRoutine()}</div>
 <Container className = "main-menu">
-                <Button className = "am-routine-button">AM</Button><br />
-                <Button className = "pm-routine-button">PM</Button><br/>
-                <Button className = "treatment-routine-button">Treatment</Button><br/>
+                <Button className = "am-routine-button" onClick = {this.handleAmClick}>AM</Button><br />
+                <Button className = "pm-routine-button" onClick = {this.handlePmClick}>PM</Button><br/>
+                <Button className = "treatment-routine-button" onClick = {this.handleTreatmentClick}>Treatment</Button><br/>
                 <Divider />
                 <Button className = "skin-diary-button">Skin Diary</Button><br/>
                 <Button className = "shopping-list-button">Shopping List</Button><br/>

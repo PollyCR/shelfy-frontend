@@ -131,3 +131,10 @@ export default {
   getEveningRoutine,
   getTreatmentRoutine
 };
+
+
+fetch("http://localhost:3000/api/v1/morning_routine_products", {
+    method: "POST",
+    headers:   {"Content-Type": "application/json"},
+  Accept: "application/json", body: JSON.stringify({morning_routine_product: {morning_routine_id:"1", product_id:"1"}})
+  }).then(resp => resp.json()).then(console.log)
