@@ -19,30 +19,16 @@ const handleError = () => {
   console.error("something went wrong");
 };
 
-const getMorningRoutineProducts = user => {
-  fetch("http://localhost:3000/api/v1/morning_routine_products", {
-    method: "GET",
-    headers: headers(authHeader())
-  })
-    .then(resp => resp.json())
-    .then(console.log);
-};
 
-const getEveningRoutine = user => {
-  fetch("http://localhost:3000/api/v1/evening_routines", {
+
+const getRoutine = (user,type) => {
+  fetch("http://localhost:3000/api/v1/routines", {
     method: "POST",
     headers: headers(authHeader()),
-    body: JSON.stringify({ evening_routine: { user_id: user.id } })
-  }).then(handleServerResponse());
+    body: JSON.stringify({ routine: { user_id: user.id, routine_type: type  } })
+  }).then(resp => resp.json())
 };
 
-const getTreatmentRoutine = user => {
-  fetch("http://localhost:3000/api/v1/treatment_routines", {
-    method: "POST",
-    headers: headers(authHeader()),
-    body: JSON.stringify({ treatment_routine: { user_id: user.id } })
-  }).then(handleServerResponse());
-};
 
 const handleServerResponse = res => {
   if (res.ok) {
@@ -106,12 +92,7 @@ const getBrands = () =>
     headers: headers()
   }).then(resp => resp.json());
 
-const getBrand = id => {
-  fetch(`${BRANDS_URL}/${id}`, {
-    method: "GET",
-    headers: headers()
-  }).then(resp => resp.json());
-};
+
 
 const validateUser = () =>
   fetch(VALIDATE_URL, {
@@ -138,9 +119,7 @@ export default {
   signup,
   validateUser,
   logout,
-  getMorningRoutineProducts,
-  getEveningRoutine,
-  getTreatmentRoutine,
+  getRoutine,
   getBrands,
-  getBrand
+
 };

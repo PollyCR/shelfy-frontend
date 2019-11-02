@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
+import API from "../adapters/API";
 
-export class pmRoutineContainer extends Component {
-    render() {
-        return (
-            <div>
-                Your afternoon routine contains:
-            </div>
-        );
+const PMRoutineContainer = props => {
+  const [routine, setRoutine] = useState([]);
+
+  useEffect(() => {
+    API.validateUser();
+    if (props.user) {
+      API.getRoutine(props.user, "pm");
     }
-}
+  }, []);
 
-export default pmRoutineContainer;
+  return <div>Hello</div>;
+};
+
+export default PMRoutineContainer;
