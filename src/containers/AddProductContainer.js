@@ -3,6 +3,10 @@ import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
 export class AddProductContainer extends Component {
+
+    componentDidMount = () => {
+        API.validateUser()
+    }
   state = {
     routine: null,
     product_type: null,
@@ -13,7 +17,8 @@ export class AddProductContainer extends Component {
 
   handleSubmit = event => {
     event.persist();
-   API.addProduct({...this.state, id: this.props.user.id})
+    API.addProduct({ ...this.state, id: this.props.user.id })
+    this.props.history.push(`/${this.state.routine}`);
   };
 
   routineOptions = [
@@ -44,16 +49,16 @@ export class AddProductContainer extends Component {
     { key: "Mask", text: "Mask", value: "Mask" },
     { key: "Peel", text: "Peel", value: "Peel" },
     {
-      key: "Targeted treatment",
-      text: "Targeted treatment",
-      value: "Targeted treatment"
+      key: "Other",
+      text: "Other",
+      value: "Other"
     }
   ];
   render() {
     return (
       <div>
         <h1>Add a Product...</h1>
-        <Form onClick={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Input
             required
             onChange={this.setValues}

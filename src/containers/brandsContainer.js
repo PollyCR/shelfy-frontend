@@ -31,6 +31,7 @@ const BrandsContainer = () => {
           <h1>{brands.find(brand => brand.id === selectedBrand).name}</h1>
           )}
        else {
+         return <Placeholder />
     }
   };
 

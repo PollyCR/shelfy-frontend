@@ -22,6 +22,15 @@ const handleError = () => {
   console.error("something went wrong");
 };
 
+const getProducts = () => {
+  // console.log(data)
+  return fetch("http://localhost:3000/api/v1/products", {
+    method: "GET",
+    headers: headers(authHeader()),
+  //   body: JSON.stringify({ data })
+  }).then(resp => resp.json())
+}
+
 const getRoutine = (user, type) => {
   fetch("http://localhost:3000/api/v1/routines", {
     method: "POST",
@@ -107,8 +116,8 @@ const getDiary = user =>
   }).then(resp => resp.json())
 
 
-const validateUser = () =>
-  fetch(VALIDATE_URL, {
+const validateUser = () =>{
+  return fetch(VALIDATE_URL, {
     method: "POST",
     headers: headers(authHeader())
   })
@@ -122,13 +131,15 @@ const validateUser = () =>
       }
       return userDetails.user || userDetails;
     })
-    .catch(handleError);
+    .catch(handleError)
+  }
 
     const addProduct = data => {
+      // console.log(data) }
       fetch(ROUTINE_PRODUCTS_URL, {
         method: "POST", 
         headers: headers(),
-        body: JSON.stringify(data)}).then(resp => resp.json()).then(console.log)}
+        body: JSON.stringify(data)}).then(resp => resp.json())}
       
     
 
@@ -144,5 +155,6 @@ export default {
   getBrands,
   getDiary,
   getList,
-  addProduct
+  addProduct,
+  getProducts
 };

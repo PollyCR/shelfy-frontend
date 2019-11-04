@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import API from '../adapters/API'
-import {Button} from 'semantic-ui-react'
+import {Button, Form} from 'semantic-ui-react'
 
 const SkinDiaryContainer = props => {
     const [diary, setDiary] = useState([]);
@@ -12,7 +12,9 @@ const SkinDiaryContainer = props => {
       }
     }, []);
 
-            if (diary.length === 0) {return <div>You have no entries in your diary yet!<br /> <Button>Add entry</Button></div>}
+return (<h1> hello</h1>)
+// diary.length > 0 ? <h3>Hello</h3> : 
+// )
 
 }
 
