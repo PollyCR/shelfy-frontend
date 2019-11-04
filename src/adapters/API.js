@@ -4,6 +4,9 @@ const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
 const VALIDATE_URL = `${BASE_URL}api/v1/validate`;
 const BRANDS_URL = `${BASE_URL}api/v1/brands`;
+const DIARY_URL = `${BASE_URL}api/v1/diaries`;
+const LIST_URL = `${BASE_URL}api/v1/lists`;
+const ROUTINE_PRODUCTS_URL = `${BASE_URL}api/v1/routine_products`
 
 const headers = (more = {}) => ({
   "Content-Type": "application/json",
@@ -19,16 +22,13 @@ const handleError = () => {
   console.error("something went wrong");
 };
 
-
-
-const getRoutine = (user,type) => {
+const getRoutine = (user, type) => {
   fetch("http://localhost:3000/api/v1/routines", {
     method: "POST",
     headers: headers(authHeader()),
-    body: JSON.stringify({ routine: { user_id: user.id, routine_type: type  } })
-  }).then(resp => resp.json())
+    body: JSON.stringify({ routine: { user_id: user.id, routine_type: type } })
+  }).then(resp => resp.json());
 };
-
 
 const handleServerResponse = res => {
   if (res.ok) {
@@ -92,6 +92,19 @@ const getBrands = () =>
     headers: headers()
   }).then(resp => resp.json());
 
+const getDiary = user =>
+  fetch(DIARY_URL, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({ diary: { user_id: user.id} })
+  }).then(resp => resp.json())
+  
+  const getList = user =>
+  fetch(LIST_URL, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({ list: { user_id: user.id} })
+  }).then(resp => resp.json())
 
 
 const validateUser = () =>
@@ -111,6 +124,14 @@ const validateUser = () =>
     })
     .catch(handleError);
 
+    const addProduct = data => {
+      fetch(ROUTINE_PRODUCTS_URL, {
+        method: "POST", 
+        headers: headers(),
+        body: JSON.stringify(data)}).then(resp => resp.json()).then(console.log)}
+      
+    
+
 const logout = () => {
   localStorage.removeItem("token");
 };
@@ -121,5 +142,7 @@ export default {
   logout,
   getRoutine,
   getBrands,
-
+  getDiary,
+  getList,
+  addProduct
 };

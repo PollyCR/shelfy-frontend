@@ -1,0 +1,101 @@
+import React, { Component } from "react";
+import { Form, Button } from "semantic-ui-react";
+import API from "../adapters/API";
+
+export class AddProductContainer extends Component {
+  state = {
+    routine: null,
+    product_type: null,
+    product_name: null,
+    brand: null,
+    active_ingredients: null
+  };
+
+  handleSubmit = event => {
+    event.persist();
+   API.addProduct({...this.state, id: this.props.user.id})
+  };
+
+  routineOptions = [
+    { id: "am", key: "Morning", text: "Morning", value: "am" },
+    { id: "pm", key: "Evening", text: "Evening", value: "pm" },
+    { id: "treatment", key: "Treatment", text: "Treatment", value: "treatment" }
+  ];
+
+  setValues = (e, data) => {
+    e.persist();
+    // // console.log(e)
+    // console.log(data)
+    this.setState({ [data.name]: data.value });
+  };
+
+  setProductType = (e, value) => {
+    this.setState({ product_type: value });
+  };
+
+  productTypeOptions = [
+    { key: "Cleanser", text: "Cleanser", value: "Cleanser" },
+    { key: "Toner", text: "Toner", value: "Toner" },
+    { key: "Moisturiser", text: "Moisturiser", value: "Moisturiser" },
+    { key: "Serum", text: "Serum", value: "Serum" },
+    { key: "Oil", text: "Oil", value: "Oil" },
+    { key: "Eye cream", text: "Eye cream", value: "Eye cream" },
+    { key: "Lip treatment", text: "Lip treatment", value: "Lip treatment" },
+    { key: "Mask", text: "Mask", value: "Mask" },
+    { key: "Peel", text: "Peel", value: "Peel" },
+    {
+      key: "Targeted treatment",
+      text: "Targeted treatment",
+      value: "Targeted treatment"
+    }
+  ];
+  render() {
+    return (
+      <div>
+        <h1>Add a Product...</h1>
+        <Form onClick={this.handleSubmit}>
+          <Form.Input
+            required
+            onChange={this.setValues}
+            name="brand"
+            label="Brand"
+          />
+          <Form.Input
+            required
+            onChange={this.setValues}
+            name="product_name"
+            label="Name"
+          />
+          <Form.Dropdown
+            name="product_type"
+            required
+            clearable
+            selection
+            search
+            onChange={this.setValues}
+            options={this.productTypeOptions}
+            label="Product type"
+          />
+          <Form.Input
+            required
+            onChange={this.setValues}
+            name="active_ingredients"
+            label="Active ingredient(s)"
+          />
+          <Form.Dropdown
+            name="routine"
+            required
+            clearable
+            selection
+            onChange={this.setValues}
+            options={this.routineOptions}
+            label="Routine"
+          />
+          <Button type="submit">Add product</Button>
+        </Form>
+      </div>
+    );
+  }
+}
+
+export default AddProductContainer;

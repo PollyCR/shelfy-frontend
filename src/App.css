@@ -21,7 +21,7 @@
 .App-link {
   color: #09d3ac;
 }
-.ui.button.am-routine-button,.ui.button.pm-routine-button,.ui.button.treatment-routine-button,.ui.button.skin-diary-button,.ui.button.shopping-list-button,.ui.button.brands-button {
+.ui.button.log-out-button, .ui.button.am-routine-button,.ui.button.pm-routine-button,.ui.button.treatment-routine-button,.ui.button.skin-diary-button,.ui.button.shopping-list-button,.ui.button.brands-button {
 
 margin: 4% !important;
 border: 1px solid #707070 !important;

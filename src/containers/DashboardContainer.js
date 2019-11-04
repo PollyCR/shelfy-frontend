@@ -71,7 +71,7 @@ this.props.history.push('/treatment')
     render() {
         return (
             <div>
-<Link to="/logout"><Button>Logout</Button></Link>
+<Link to="/logout"><Button className = "log-out-button">Logout</Button></Link>
 <div>{this.getRoutine()}</div>
 <Container className = "main-menu">
                 <Button className = "am-routine-button" onClick = {this.handleAmClick}>AM</Button><br />

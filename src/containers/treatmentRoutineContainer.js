@@ -1,13 +1,27 @@
-import React, { Component } from 'react';
 
-export class treatmentRoutineContainer extends Component {
-    render() {
-        return (
-            <div>
-                Your treatment routine contains:
-            </div>
-        );
+import React, {useState, useEffect } from 'react';
+import API from '../adapters/API'
+import {Button} from 'semantic-ui-react'
+
+
+const TreatmentRoutineContainer = props => {
+      const [routine, setRoutine] = useState([]);
+
+  useEffect(() => {
+    API.validateUser();
+    if (props.user) {
+      API.getRoutine(props.user, "treatment");
     }
-}
+  }, []);
 
-export default treatmentRoutineContainer;
+  const handleAddProductClick = () => {
+    props.history.push("/add");
+  };
+
+  if (routine.length === 0) {return <div>You have no products in your routine yet!<br /> <Button onClick={handleAddProductClick}>Add product</Button></div>}
+
+};
+
+
+export default TreatmentRoutineContainer;
+
