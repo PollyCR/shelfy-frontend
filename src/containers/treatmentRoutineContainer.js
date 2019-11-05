@@ -1,52 +1,60 @@
+import React, { Component } from "react";
+import API from "../adapters/API";
+import { Button } from "semantic-ui-react";
+import ProductComponent from "../components/Product";
 
-import React, {  Component } from "react";
-import API from '../adapters/API'
-import {Button} from 'semantic-ui-react'
-import ProductComponent from '../components/Product'
+export class treatmentRoutineContainer extends Component {
+  state = {
+    user: null,
+    products: []
+  };
+  componentDidMount = () => {
+    this.getRoutine();
+  };
 
+  handleDeleteClick = id => {
+    API.deleteRoutineProduct(id).then(() => this.getRoutine());
+  };
 
-export default class TreatmentRoutineContainer extends React.Component {
+  getRoutine = () => {
+    if (this.props.user) {
+    API.getUser(this.props.user.id).then(data => {
+          this.setState({ user: data, products: data.treatment_products });
+    });}
+  };
+  // console.log(data)
+  //   });
+  // };
 
-    state = {
-        routine: null, 
-        products: []
-      } 
-    componentDidMount = () => {
-        API.validateUser().then(() => {
-          if (this.props.user) {
-            API.getProducts().then(data => {
-                // console.log(data)
-              this.setState({ products: data, routine: this.props.user.routines.filter(routine => routine.routine_type === "treatment")}, this.matchProducts)
-            
-            });
-      }})}
-    
-      matchProducts = () => {
-        return this.state.products.filter(product =>
-          product.routine_products.find(p => p.routine_id === this.state.routine.id)
-        );
-      };
-    
-      handleAddProductClick = () => {
-        this.props.history.push("/add");
-      };
-    
-      render() {
-        return (
-          <div>
-            {this.state.products ? (
-              this.matchProducts().map(product =>
-                product.name && product.name.length > 0 && product.id ? (
-                  <ProductComponent key = {product.id} product={product} />
-                ) : null
-              )
-            ) : (
-              <h5>there are no products in your routine yet!</h5>
-            )}
-            <Button onClick={this.handleAddProductClick}>Add product</Button>
-          </div>
-        );
-      }
-    }
+  handleBackClick = () => {
+    this.props.history.push("/dashboard");
+  };
 
+  handleAddProductClick = () => {
+    this.props.history.push("/add");
+  };
 
+  render() {
+    return (
+      <div>
+        {this.state.user && this.state.products.length > 0 ? (
+          this.state.products.map(product => (
+            <div>
+              <ProductComponent
+                handleDeleteClick={this.handleDeleteClick}
+                key={product.id}
+                product={product}
+              />{" "}
+            </div>
+          ))
+        ) : (
+          <div>There are no products in your routine yet!</div>
+        )}
+        <Button onClick={this.handleAddProductClick}>Add product</Button>
+        <br /> <Button onClick={this.handleBackClick}>Go back</Button>
+      </div>
+    );
+  }
+}
+
+export default treatmentRoutineContainer;

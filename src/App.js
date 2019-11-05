@@ -9,7 +9,9 @@ const notFoundMessage = () => <Message negative>NOT FOUND</Message>;
 
 class App extends React.Component {
   state = {
-    user: null
+    user: null,
+    selectedProduct: null,
+    brands: []
   };
 
   componentDidMount() {
@@ -23,6 +25,13 @@ class App extends React.Component {
       }
     })
   }
+
+  handleRoutineClick = product => {
+    this.setState({selectedProduct: product})
+    this.props.history.push("/brands/add")
+  }
+
+
 
   login = user => {
   if (user.errors) {return null} else {
@@ -56,6 +65,9 @@ class App extends React.Component {
                     logout={this.logout}
                     signup={this.signup}
                     setUser={this.setUser}
+                    handleRoutineClick = {this.handleRoutineClick}
+                    selectedProduct = {this.state.selectedProduct}
+                    brands = {this.state.brands}
 
                   />
                 ) : (

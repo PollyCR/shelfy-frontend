@@ -1,21 +1,33 @@
 import React, { Component } from "react";
-import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
+import { Form, Button, Placeholder } from "semantic-ui-react";
 
-export class AddProductContainer extends Component {
-  state = {
-    routine: null,
-    product_type: null,
-    product_name: null,
-    brand: null,
-    active_ingredients: null
+export class AddBrandProductContainer extends Component {
+  state = { brand: null };
+
+  componentDidMount = () => {
+    if (this.props.selectedProduct) {
+      API.getBrands().then(brands => {
+        if (this.props.selectedProduct !== undefined) {
+          this.setState({
+            brand: brands.find(
+              brand => brand.id === this.props.selectedProduct.brand_id
+            )
+          });
+        }
+      });
+    } else {
+      this.props.history.push("/dashboard");
+    }
   };
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id }).then(()=> {this.props.history.push(`/${this.state.routine}`)});
+    API.addProduct({ ...this.state, id: this.props.user.id });
+    // .then(() => {
+    //   this.props.history.push(`/${this.state.routine}`);
+    // });
     // API.getRoutine(this.props.user, this.state.routine);
-    ;
   };
 
   routineOptions = [
@@ -52,36 +64,18 @@ export class AddProductContainer extends Component {
       value: "Other"
     }
   ];
+
+  setRoutine = (e, value) => {
+    this.setState({ routine: value });
+  };
   render() {
     return (
       <div>
-        <h1>Add a Product...</h1>
+        <h1>Add {this.props.selectedProduct.name} to routine</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
             required
-            onChange={this.setValues}
-            name="brand"
-            label="Brand"
-          />
-          <Form.Input
-            required
-            onChange={this.setValues}
-            name="product_name"
-            label="Name"
-          />
-          <Form.Dropdown
-            name="product_type"
-            required
-            clearable
-            selection
-            search
-            onChange={this.setValues}
-            options={this.productTypeOptions}
-            label="Product type"
-          />
-          <Form.Input
-            required
-            onChange={this.setValues}
+            onChange={this.setActiveIngredients}
             name="active_ingredients"
             label="Active ingredient(s)"
           />
@@ -90,7 +84,7 @@ export class AddProductContainer extends Component {
             required
             clearable
             selection
-            onChange={this.setValues}
+            onChange={this.setRoutine}
             options={this.routineOptions}
             label="Routine"
           />
@@ -101,4 +95,4 @@ export class AddProductContainer extends Component {
   }
 }
 
-export default AddProductContainer;
+export default AddBrandProductContainer;

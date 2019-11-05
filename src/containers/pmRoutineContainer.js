@@ -1,26 +1,34 @@
-import React, {  Component } from "react";
+import React, { Component } from "react";
 import API from "../adapters/API";
 import { Button } from "semantic-ui-react";
-import ProductComponent from '../components/Product'
+import ProductComponent from "../components/Product";
 
 export class pmRoutineContainer extends Component {
-
   state = {
-    routine: null, 
+    user: null,
     products: []
-  }
-
+  };
   componentDidMount = () => {
-    API.validateUser().then(() => {
-      if (this.props.user) {
-        API.getProducts().then(data => {
-          this.setState({ products: data, routine: this.props.user.routines.find(routine => routine.routine_type === "pm")}, this.matchProducts)
-        
-        });
-  }})}
+    this.getRoutine();
+  };
 
-   matchProducts = () => {
-    return this.state.products.filter(product => product.routine_products.find(p => p.routine_id ===this.state.routine.id))
+  handleDeleteClick = id => {
+    API.deleteRoutineProduct(id).then(() => this.getRoutine());
+  };
+
+  getRoutine = () => {
+    if (this.props.user) {
+    API.getUser(this.props.user.id).then(data => {
+      console.log(data);
+          this.setState({ user: data, products: data.evening_products });
+    });}
+  };
+  // console.log(data)
+  //   });
+  // };
+
+  handleBackClick = () => {
+    this.props.history.push("/dashboard");
   };
 
   handleAddProductClick = () => {
@@ -30,16 +38,21 @@ export class pmRoutineContainer extends Component {
   render() {
     return (
       <div>
-        {this.state.products ? (
-          this.matchProducts().map(product =>
-            product.name && product.name.length > 0 ? (
-              <ProductComponent key = {product.id} product={product} />
-            ) : null
-          )
+        {this.state.user && this.state.products.length > 0 ? (
+          this.state.products.map(product => (
+            <div>
+              <ProductComponent
+                handleDeleteClick={this.handleDeleteClick}
+                key={product.id}
+                product={product}
+              />{" "}
+            </div>
+          ))
         ) : (
-          <h5>there are no products in your routine yet!</h5>
+          <div>There are no products in your routine yet!</div>
         )}
         <Button onClick={this.handleAddProductClick}>Add product</Button>
+        <br /> <Button onClick={this.handleBackClick}>Go back</Button>
       </div>
     );
   }

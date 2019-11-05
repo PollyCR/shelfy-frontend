@@ -8,11 +8,11 @@ const SkinDiaryContainer = props => {
     useEffect(() => {
       API.validateUser();
       if (props.user) {
-        API.getDiary(props.user)
+        API.getDiary(props.user).then(data => setDiary({diary: data}))
       }
     }, []);
 
-return (<h1> hello</h1>)
+return (<h1> {diary.length}</h1>)
 // diary.length > 0 ? <h3>Hello</h3> : 
 // )
 
