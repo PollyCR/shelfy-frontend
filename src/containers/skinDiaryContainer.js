@@ -1,21 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import API from '../adapters/API'
-import {Button, Form} from 'semantic-ui-react'
+import React, { Component } from "react";
+import API from "../adapters/API";
 
-const SkinDiaryContainer = props => {
-    const [diary, setDiary] = useState([]);
+import AddDiaryEntryContainer from "./AddDiaryEntryContainer";
 
-    useEffect(() => {
-      API.validateUser();
-      if (props.user) {
-        API.getDiary(props.user).then(data => setDiary({diary: data}))
-      }
-    }, []);
+class SkinDiaryContainer extends React.Component {
+  state = { diary: null };
 
-return (<h1> {diary.length}</h1>)
-// diary.length > 0 ? <h3>Hello</h3> : 
-// )
+  componentDidMount = () => {
+    API.validateUser().then(
+      API.getDiary(this.props.user).then(data => {
+        this.setState({ diary: data });
+      })
+    );
+  };
 
+  
+
+  render() {
+    return (
+      <div>
+        {this.state && this.state.diary ? (
+            // console.log("hi")
+          <AddDiaryEntryContainer history = {this.props.history} user={this.props.user} />
+        ) : null}
+        {this.state && this.state.diary && this.state.diary.entries && this.state.diary.entries.length > 0
+          ? this.state.diary.entries.map(entry => <h4 key = {entry.id}>{entry.content}</h4>)
+          : null}{" "}
+      </div>
+    );
+    // diary.length > 0 ? <h3>Hello</h3> :
+    // )
+  }
 }
 
 export default SkinDiaryContainer;

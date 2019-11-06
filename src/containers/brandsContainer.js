@@ -46,7 +46,7 @@ const BrandsContainer = props => {
             .products.map(product => (
               <ul key={product.id}>
                 {product.name} <br />
-                <Button onClick={() => {props.handleRoutineClick(product)}}>Add to routine</Button>
+                <Button onClick={() => {props.handleRoutineClick(product.id)}}>Add to routine</Button>
                 <Button>Add to list</Button>
               </ul>
             ))}

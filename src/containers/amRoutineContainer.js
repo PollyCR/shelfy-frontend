@@ -19,13 +19,11 @@ export class amRoutineContainer extends Component {
   getRoutine = () => {
     if (this.props.user) {
     API.getUser(this.props.user.id).then(data => {
-      console.log(data);
+      // console.log(data);
           this.setState({ user: data, products: data.morning_products });
     });}
   };
-  // console.log(data)
-  //   });
-  // };
+
 
   handleBackClick = () => {
     this.props.history.push("/dashboard");

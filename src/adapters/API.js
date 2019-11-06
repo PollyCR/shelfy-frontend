@@ -7,6 +7,7 @@ const BRANDS_URL = `${BASE_URL}api/v1/brands`;
 const DIARY_URL = `${BASE_URL}api/v1/diaries`;
 const LIST_URL = `${BASE_URL}api/v1/lists`;
 const ROUTINE_PRODUCTS_URL = `${BASE_URL}api/v1/routine_products`;
+const ENTRIES_URL = `${BASE_URL}api/v1/entries`
 const USERS_URL = `${BASE_URL}api/v1/users`
 
 const headers = (more = {}) => ({
@@ -122,6 +123,18 @@ const getDiary = user =>
     method: "DELETE",
    })
     }
+
+    const postEntry = (user, routine, entry) => {
+      console.log(user)
+      console.log(routine)
+      console.log(entry)
+      return fetch(ENTRIES_URL, {
+        method: "POST",
+        headers: headers(authHeader()),
+        body: JSON.stringify({user:user, routine:routine,entry:entry})
+      })
+      
+    }
   
 
 const getList = user =>
@@ -150,13 +163,13 @@ const validateUser = () => {
 };
 
 const addProduct = data => {
-  console.log(data) }
-  // return fetch(ROUTINE_PRODUCTS_URL, {
-  //   method: "POST",
-  //   headers: headers(),
-  //   body: JSON.stringify(data)
-  // }).then(resp => resp.json());
-// };
+  // console.log(data) }
+  return fetch(ROUTINE_PRODUCTS_URL, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  }).then(resp => resp.json());
+};
 
 const logout = () => {
   localStorage.removeItem("token");
@@ -173,5 +186,6 @@ export default {
   addProduct,
   deleteRoutineProduct,
   getProducts,
-  getUser
+  getUser,
+  postEntry
 };
