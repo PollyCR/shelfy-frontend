@@ -125,9 +125,9 @@ const getDiary = user =>
     }
 
     const postEntry = (user, routine, entry) => {
-      console.log(user)
-      console.log(routine)
-      console.log(entry)
+      // console.log(user)
+      // console.log(routine)
+      // console.log(entry)
       return fetch(ENTRIES_URL, {
         method: "POST",
         headers: headers(authHeader()),
@@ -171,6 +171,20 @@ const addProduct = data => {
   }).then(resp => resp.json());
 };
 
+const deleteEntry = id => {
+  return fetch(`${ENTRIES_URL}/${id}`, {
+    method: "DELETE"
+  })
+}
+
+const addListProduct = data => {
+  return fetch(LIST_URL, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  }).then(resp => resp.json());
+};
+
 const logout = () => {
   localStorage.removeItem("token");
 };
@@ -187,5 +201,7 @@ export default {
   deleteRoutineProduct,
   getProducts,
   getUser,
-  postEntry
+  postEntry,
+  deleteEntry,
+  addListProduct
 };
