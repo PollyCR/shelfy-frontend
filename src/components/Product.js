@@ -7,7 +7,7 @@ import API from '../adapters/API'
 export class Product extends Component {
 
 handleListClick = ()=> {
-    API.addListProduct(this.props.product)
+    API.addListProduct(this.props.product).then(() => {API.getRoutine()})
 }
 
 

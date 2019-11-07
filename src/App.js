@@ -49,7 +49,10 @@ class App extends React.Component {
 
   render() {
     return (
+      <div>
+      <div><h1>Shelfy: Your skincare, made smarter.</h1><br /></div>
       <div className="App">
+        
         <Container >
           {routes.map(route => (
             <Route
@@ -77,7 +80,7 @@ class App extends React.Component {
             />
           ))}
         </Container>
-      </div>
+      </div></div>
     );
   }
 }

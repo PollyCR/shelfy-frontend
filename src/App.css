@@ -3,24 +3,6 @@
   display:flex;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
 .ui.button.log-out-button, .ui.button.am-routine-button,.ui.button.pm-routine-button,.ui.button.treatment-routine-button,.ui.button.skin-diary-button,.ui.button.shopping-list-button,.ui.button.brands-button {
 
 margin: 4% !important;

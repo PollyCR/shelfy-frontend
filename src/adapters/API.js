@@ -7,6 +7,7 @@ const BRANDS_URL = `${BASE_URL}api/v1/brands`;
 const DIARY_URL = `${BASE_URL}api/v1/diaries`;
 const LIST_URL = `${BASE_URL}api/v1/lists`;
 const ROUTINE_PRODUCTS_URL = `${BASE_URL}api/v1/routine_products`;
+const LIST_PRODUCTS_URL = `${BASE_URL}api/v1/list_products`;
 const ENTRIES_URL = `${BASE_URL}api/v1/entries`
 const USERS_URL = `${BASE_URL}api/v1/users`
 
@@ -178,7 +179,7 @@ const deleteEntry = id => {
 }
 
 const addListProduct = data => {
-  return fetch(LIST_URL, {
+  return fetch(LIST_PRODUCTS_URL, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify(data)

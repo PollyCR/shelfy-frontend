@@ -20,6 +20,10 @@ class SkinDiaryContainer extends React.Component {
     API.deleteEntry(e.target.id).then(() => this.props.history.push("/diary"));
   };
 
+  handleBackClick = () => {
+    this.props.history.push("/dashboard");
+  };
+
   render() {
     return (
       <div>
@@ -48,6 +52,7 @@ class SkinDiaryContainer extends React.Component {
               </div>
             ))
           : null}{" "}
+          <br /> <Button onClick={this.handleBackClick}>Go back</Button>
       </div>
     );
     // diary.length > 0 ? <h3>Hello</h3> :
