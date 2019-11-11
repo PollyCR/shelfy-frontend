@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
-import { Form, Button, Placeholder } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 
 export class AddBrandProductContainer extends Component {
   state = { 

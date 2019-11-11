@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
-import { Button } from "semantic-ui-react";
+import { Button, Card, Container } from "semantic-ui-react";
 import ProductComponent from "../components/Product";
 
 export class amRoutineContainer extends Component {
@@ -35,23 +35,24 @@ export class amRoutineContainer extends Component {
 
   render() {
     return (
-      <div>
+      <Container><Card.Group itemsPerRow={2}>
         {this.state.user && this.state.products.length > 0 ? (
           this.state.products.map(product => (
-            <div>
               <ProductComponent
                 handleDeleteClick={this.handleDeleteClick}
                 key={product.id}
                 product={product}
-              />{" "}
-            </div>
+                user = {this.state.user}
+                history = {this.props.history}
+                brands = {this.props.brands}
+              />
           ))
         ) : (
           <div>There are no products in your routine yet!</div>
         )}
         <Button onClick={this.handleAddProductClick}>Add product</Button>
         <br /> <Button onClick={this.handleBackClick}>Go back</Button>
-      </div>
+        </Card.Group></Container>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { routes } from "./config/routes";
 import { Route } from "react-router-dom";
-import { Container, Message } from "semantic-ui-react";
+import { Container, Message} from "semantic-ui-react";
 import API from "./adapters/API";
 
 const notFoundMessage = () => <Message negative>NOT FOUND</Message>;
@@ -10,9 +10,11 @@ const notFoundMessage = () => <Message negative>NOT FOUND</Message>;
 class App extends React.Component {
   state = {
     user: null,
-    selectedProduct: null,
-    brands: []
+    brands: [],
+    products: []
   };
+
+
 
   componentDidMount() {
     API.validateUser().then(user => {
@@ -23,7 +25,7 @@ class App extends React.Component {
       } else if (user) {
         this.props.history.push("/dashboard")
       }
-    })
+    }, API.getBrands().then(data => this.setState({brands: data})), API.getProducts().then(data => this.setState({products:data})))
   }
 
   handleRoutineClick = product => {
@@ -49,11 +51,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-      <div><h1>Shelfy: Your skincare, made smarter.</h1><br /></div>
-      <div className="App">
-        
-        <Container >
+      <div className = "background">
+        <Container className = "main-container">
+      <h1>Shelfy</h1>
+      <h4>Your skin, made smarter</h4>
           {routes.map(route => (
             <Route
               key={route.path}
@@ -69,9 +70,8 @@ class App extends React.Component {
                     signup={this.signup}
                     setUser={this.setUser}
                     handleRoutineClick = {this.handleRoutineClick}
-                    selectedProduct = {this.state.selectedProduct}
                     brands = {this.state.brands}
-
+                    products = {this.state.products}
                   />
                 ) : (
                   notFoundMessage()
@@ -79,8 +79,8 @@ class App extends React.Component {
               }
             />
           ))}
-        </Container>
-      </div></div>
+      </Container>
+      </div>
     );
   }
 }

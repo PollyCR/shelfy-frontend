@@ -14,12 +14,27 @@ const BrandsContainer = props => {
     });
   }, []);
 
+  const handleBackClick = () => {
+    props.history.push("/dashboard");
+  };
+
   const findBrands = () => {
     return brands.map(brand => (
       <ul key={brand.id} onClick={findBrand} id={brand.id} value={brand.name}>
         {brand.name}
       </ul>
     ));
+  };
+
+  const handleListClick = (user, product) => {
+    API.addListProduct(user.id, product).then(props.history.push("/list"));
+    // .then(() => {API.getRoutine()})
+  };
+
+  const handleRoutineClick = (event, product) => {
+    event.persist()
+    API.addProduct({ ...product, routine: event.target.id, id: props.user.id }).then(() => props.history.push(`/${event.target.id}`))
+    // console.log({routine:event.target})
   };
 
   const findBrand = event => {
@@ -33,28 +48,53 @@ const BrandsContainer = props => {
     }
   };
 
-
-
   return (
     <div>
       <h1>Choose a brand...</h1>
       {selectedBrand ? (
-        <Card>
+        <Card className = "selectedBrand" >
           <h1>{brands.find(brand => brand.id === selectedBrand).name}</h1>
           {brands
             .find(brand => brand.id === selectedBrand)
             .products.map(product => (
-              <ul key={product.id}>
-                {product.name} <br />
-                <Button onClick={() => {props.handleRoutineClick(product.id)}}>Add to routine</Button>
-                <Button>Add to list</Button>
-              </ul>
+              <div key={product.id}>
+                <ul>{product.name}</ul>
+                <ul>{product.product_type}</ul>
+                <ul className="activeIngredients">
+                  {" "}
+                  {product.active_ingredients.map(a_i => a_i.name).join(", ")}
+                </ul>
+                <Button.Group vertical basic>
+                  <Button
+                    onClick={() => handleListClick(props.user, product.id)}
+                  >
+                    Add to list
+                  </Button>
+                  <Button id="am" onClick={event => handleRoutineClick(event, product)}>
+                    Add to Morning Routine
+                  </Button>
+                  <Button
+                    id="pm"
+                    onClick={event => handleRoutineClick(event, product)}
+                  >
+                    Add to Evening Routine
+                  </Button>
+                  <Button
+                    id="treatment"
+                    onClick={event => handleRoutineClick(event, product)}
+                  >
+                    Add to Treatment Routine
+                  </Button>
+                </Button.Group>
+              </div>
             ))}
         </Card>
       ) : null}
       {findBrands()}
+      <Button onClick={handleBackClick}>Go back</Button>
+
     </div>
-  );
+    );
 };
 
 export default BrandsContainer;

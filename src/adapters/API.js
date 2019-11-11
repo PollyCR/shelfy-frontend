@@ -8,16 +8,17 @@ const DIARY_URL = `${BASE_URL}api/v1/diaries`;
 const LIST_URL = `${BASE_URL}api/v1/lists`;
 const ROUTINE_PRODUCTS_URL = `${BASE_URL}api/v1/routine_products`;
 const LIST_PRODUCTS_URL = `${BASE_URL}api/v1/list_products`;
-const ENTRIES_URL = `${BASE_URL}api/v1/entries`
-const USERS_URL = `${BASE_URL}api/v1/users`
+const ENTRIES_URL = `${BASE_URL}api/v1/entries`;
+const USERS_URL = `${BASE_URL}api/v1/users`;
+const PRODUCTS_URL = `${BASE_URL}api/v1/products`;
 
 const headers = (more = {}) => ({
   "Content-Type": "application/json",
-  "Accept": "application/json",
+  Accept: "application/json",
   ...more
 });
 const authHeader = (more = {}) => ({
-  "Authorisation": localStorage.getItem("token"),
+  Authorisation: localStorage.getItem("token"),
   ...more
 });
 
@@ -27,10 +28,9 @@ const handleError = () => {
 
 const getProducts = () => {
   // console.log(data)
-  return fetch("http://localhost:3000/api/v1/products", {
+  return fetch(PRODUCTS_URL, {
     method: "GET",
-    headers: headers(authHeader())
-    //   body: JSON.stringify({ data })
+    headers: headers()
   }).then(resp => resp.json());
 };
 
@@ -41,7 +41,9 @@ const getRoutine = (user, type) => {
     method: "POST",
     headers: headers(authHeader()),
     body: JSON.stringify({ routine: { user_id: user.id, routine_type: type } })
-  }).then(resp => resp.json()).then(console.log);
+  })
+    .then(resp => resp.json())
+    .then(console.log);
 };
 
 const handleServerResponse = res => {
@@ -71,8 +73,8 @@ const handleServerResponse = res => {
 const getUser = id => {
   return fetch(`${USERS_URL}/${id}`, {
     method: "GET"
-  }).then(resp => resp.json())}
-
+  }).then(resp => resp.json());
+};
 
 const signup = userDetails =>
   fetch(SIGNUP_URL, {
@@ -119,24 +121,23 @@ const getDiary = user =>
     body: JSON.stringify({ diary: { user_id: user.id } })
   }).then(resp => resp.json());
 
-  const deleteRoutineProduct = id => {
-   return fetch(`${ROUTINE_PRODUCTS_URL}/${id}`, {
-    method: "DELETE",
-   })
-    }
+const deleteRoutineProduct = id => {
+  // console.log(id)
+  return fetch(`${ROUTINE_PRODUCTS_URL}/${id}`, {
+    method: "DELETE"
+  });
+};
 
-    const postEntry = (user, routine, entry) => {
-      // console.log(user)
-      // console.log(routine)
-      // console.log(entry)
-      return fetch(ENTRIES_URL, {
-        method: "POST",
-        headers: headers(authHeader()),
-        body: JSON.stringify({user:user, routine:routine,entry:entry})
-      })
-      
-    }
-  
+const postEntry = (user, routine, entry) => {
+  // console.log(user)
+  // console.log(routine)
+  // console.log(entry)
+  return fetch(ENTRIES_URL, {
+    method: "POST",
+    headers: headers(authHeader()),
+    body: JSON.stringify({ user: user, routine: routine, entry: entry })
+  });
+};
 
 const getList = user =>
   fetch(LIST_URL, {
@@ -175,20 +176,36 @@ const addProduct = data => {
 const deleteEntry = id => {
   return fetch(`${ENTRIES_URL}/${id}`, {
     method: "DELETE"
-  })
-}
+  });
+};
 
-const addListProduct = data => {
+const addListProduct = (user, product) => {
+  // console.log(user)
+  // console.log(product)
   return fetch(LIST_PRODUCTS_URL, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify(data)
+    body: JSON.stringify({ user_id: user, product_id: product })
   }).then(resp => resp.json());
 };
 
 const logout = () => {
   localStorage.removeItem("token");
 };
+
+const deleteListProduct = id => {
+  return fetch(`${LIST_PRODUCTS_URL}/${id}`, {
+    method: "DELETE"
+  });
+};
+
+const addProductfromBrands = data => {
+  return fetch(ROUTINE_PRODUCTS_URL, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  }).then(resp => resp.json());
+}
 export default {
   login,
   signup,
@@ -204,5 +221,7 @@ export default {
   getUser,
   postEntry,
   deleteEntry,
-  addListProduct
+  addListProduct,
+  deleteListProduct,
+  addProductfromBrands
 };

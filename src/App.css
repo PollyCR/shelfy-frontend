@@ -1,17 +1,70 @@
+.brandName {
+  font-weight: 900;
+}
+
 .App {
-  padding:4%;
+  display: flex;
+}
+body {
+  text-align: center !important;
+}
+
+.ui.basic.button {
+  border:none !important;
+}
+.log-out-button {
+border:none !important;
+  min-width: 10em;
+}
+
+.activeIngredients {
+  color: #707070;
+  font-style: italic;
+  margin-top: -4%;
+}
+
+.ui.vertical.buttons > .button {
+
+  margin: 1% !important;
+  min-width: 10em;
+  color: #707070 !important;
+
+}
+
+.main-container {
+  margin-left:1em;
+  border:0.25px solid #707070;
+  background:white;
+  height:96.5vh;
   display:flex;
+  overflow-y: scroll;
 }
 
-.ui.button.log-out-button, .ui.button.am-routine-button,.ui.button.pm-routine-button,.ui.button.treatment-routine-button,.ui.button.skin-diary-button,.ui.button.shopping-list-button,.ui.button.brands-button {
+.background {
+  height: 100vh;
+  padding:1em;
+  background: #f3f3f3
+}
 
-margin: 4% !important;
-border: 1px solid #707070 !important;
-background-color: #f3f3f3 !important;
-color:#707070 !important;
+ul {
+  padding:0
+}
+
+.selectedBrand {
+  flex-flow: column wrap;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+margin:auto !important;
+  max-width: 70vw !important;
+  /* border-bottom: 0.25px solid rgba(34, 36, 38, 0.15) !important; */
+  border-top: 0.25px solid #707070 !important;
+  box-shadow:none !important;
+  border-top: none !important;
+  padding-bottom:10% !important
 
 }
 
-.ui.container.main-menu > button {
-margin:auto;
+.ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input{
+  width: 70vw !important;
 }

@@ -10,12 +10,13 @@ export class AddProductContainer extends Component {
     brand: null,
     active_ingredients: null
   };
+  
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id }).then(()=> {this.props.history.push(`/${this.state.routine}`)});
+    API.addProduct({ ...this.state, id: this.props.user.id }).then(() => this.props.history.push(`/${this.state.routine}`))
+
     // API.getRoutine(this.props.user, this.state.routine);
-    ;
   };
 
   routineOptions = [
@@ -60,14 +61,14 @@ export class AddProductContainer extends Component {
           <Form.Input
             required
             onChange={this.setValues}
-            name="brand"
-            label="Brand"
+            name="product_name"
+            label="Name"
           />
           <Form.Input
             required
             onChange={this.setValues}
-            name="product_name"
-            label="Name"
+            name="brand"
+            label="Brand"
           />
           <Form.Dropdown
             name="product_type"
@@ -90,6 +91,7 @@ export class AddProductContainer extends Component {
             required
             clearable
             selection
+            search
             onChange={this.setValues}
             options={this.routineOptions}
             label="Routine"

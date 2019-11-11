@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
-import { Button } from "semantic-ui-react";
+import { Button, Placeholder } from "semantic-ui-react";
 
 import AddDiaryEntryContainer from "./AddDiaryEntryContainer";
 
-class SkinDiaryContainer extends React.Component {
+class SkinDiaryContainer extends Component {
   state = { diary: null };
 
   componentDidMount = () => {
@@ -33,7 +33,7 @@ class SkinDiaryContainer extends React.Component {
             history={this.props.history}
             user={this.props.user}
           />
-        ) : null}
+        ) : <Placeholder />}
         {this.state &&
         this.state.diary &&
         this.state.diary.entries &&

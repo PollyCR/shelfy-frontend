@@ -19,12 +19,11 @@ export class treatmentRoutineContainer extends Component {
   getRoutine = () => {
     if (this.props.user) {
     API.getUser(this.props.user.id).then(data => {
+      // console.log(data);
           this.setState({ user: data, products: data.treatment_products });
     });}
   };
-  // console.log(data)
-  //   });
-  // };
+
 
   handleBackClick = () => {
     this.props.history.push("/dashboard");
@@ -39,13 +38,13 @@ export class treatmentRoutineContainer extends Component {
       <div>
         {this.state.user && this.state.products.length > 0 ? (
           this.state.products.map(product => (
-            <div>
               <ProductComponent
                 handleDeleteClick={this.handleDeleteClick}
                 key={product.id}
                 product={product}
-              />{" "}
-            </div>
+                user = {this.state.user}
+                history = {this.props.history}
+              />
           ))
         ) : (
           <div>There are no products in your routine yet!</div>
@@ -54,6 +53,7 @@ export class treatmentRoutineContainer extends Component {
         <br /> <Button onClick={this.handleBackClick}>Go back</Button>
       </div>
     );
+  
   }
 }
 

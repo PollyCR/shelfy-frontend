@@ -3,4 +3,4 @@
 *******************************/
 
 @defaultBorderRadius: 0px; 
-@primaryColor: #002f4e;
+@defaultBorder: none;
