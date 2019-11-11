@@ -4,7 +4,7 @@ import API from "../adapters/API";
 
 export class AddProductContainer extends Component {
   state = {
-    routine: null,
+    routine: this.props.routine,
     product_type: null,
     product_name: null,
     brand: null,
@@ -14,10 +14,13 @@ export class AddProductContainer extends Component {
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id }).then(() => this.props.history.push(`/${this.state.routine}`))
-
-    // API.getRoutine(this.props.user, this.state.routine);
+    API.addProduct({ ...this.state, user_id: this.props.user.id })
+    .then(() =>    API.getRoutine(this.props.user, this.state.routine), this.props.history.push(`/${this.state.routine}`))
   };
+
+  handleBackClick = () => {
+    this.props.history.push(`/${this.state.routine}`)
+  }
 
   routineOptions = [
     { id: "am", key: "Morning", text: "Morning", value: "am" },

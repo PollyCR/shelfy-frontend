@@ -36,19 +36,21 @@ export class amRoutineContainer extends Component {
   render() {
     return (
       <Container><Card.Group itemsPerRow={2}>
-        {this.state.user && this.state.products.length > 0 ? (
+        {this.state.user && this.state.products && this.state.products.length > 0 ? (
           this.state.products.map(product => (
               <ProductComponent
+              className= "productCard"
                 handleDeleteClick={this.handleDeleteClick}
                 key={product.id}
                 product={product}
                 user = {this.state.user}
                 history = {this.props.history}
                 brands = {this.props.brands}
+                routine = {"am"}
               />
           ))
         ) : (
-          <div>There are no products in your routine yet!</div>
+          <div className= "centered">There are no products in your routine yet!</div>
         )}
         <Button onClick={this.handleAddProductClick}>Add product</Button>
         <br /> <Button onClick={this.handleBackClick}>Go back</Button>

@@ -200,12 +200,23 @@ const deleteListProduct = id => {
 };
 
 const addProductfromBrands = data => {
+  // console.log(data);
+  let ingredients = data.active_ingredients.map(
+    ingredient => ingredient.name).join(",")
+    // console.log(ingredients)
   return fetch(ROUTINE_PRODUCTS_URL, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+      user_id: data.id,
+      routine: data.routine,
+      product_type: data.product_type,
+      brand: data.brand.name,
+      active_ingredients: ingredients,
+  product_name: data.name
+    })
   }).then(resp => resp.json());
-}
+};
 export default {
   login,
   signup,

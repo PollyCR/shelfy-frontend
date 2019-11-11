@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import { routes } from "./config/routes";
-import { Route } from "react-router-dom";
-import { Container, Message} from "semantic-ui-react";
+import { Link, Route } from "react-router-dom";
+import { Button, Container, Message} from "semantic-ui-react";
 import API from "./adapters/API";
+import 'semantic-ui-less/semantic.less'
 
 const notFoundMessage = () => <Message negative>NOT FOUND</Message>;
 
@@ -36,7 +37,7 @@ class App extends React.Component {
 
 
   login = user => {
-  if (user.errors) {return null} else {
+  if (user.errors) {return user.errors.full_message} else {
     this.setState({ user }, () => this.props.history.push('/dashboard'))}
   }
 
@@ -53,8 +54,8 @@ class App extends React.Component {
     return (
       <div className = "background">
         <Container className = "main-container">
-      <h1>Shelfy</h1>
-      <h4>Your skin, made smarter</h4>
+      <h1 className = "logo">Shelfy</h1>
+      <h4 className = "strapline">Your skin, made smarter</h4>
           {routes.map(route => (
             <Route
               key={route.path}
@@ -80,6 +81,7 @@ class App extends React.Component {
             />
           ))}
       </Container>
+      <Link to="/logout"><Button margin-top="3%" basic className = "log-out-button">Logout</Button></Link>
       </div>
     );
   }

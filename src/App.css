@@ -4,16 +4,22 @@
 
 .App {
   display: flex;
+
+  /* margin:auto !important; */
 }
-body {
+html {
   text-align: center !important;
+  margin: auto !important;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .ui.basic.button {
-  border:none !important;
+  border: none !important;
 }
 .log-out-button {
-border:none !important;
+  border: none !important;
   min-width: 10em;
 }
 
@@ -24,47 +30,88 @@ border:none !important;
 }
 
 .ui.vertical.buttons > .button {
-
   margin: 1% !important;
   min-width: 10em;
   color: #707070 !important;
+}
 
+.centered {
+  text-align: center !important;
 }
 
 .main-container {
-  margin-left:1em;
-  border:0.25px solid #707070;
-  background:white;
-  height:96.5vh;
-  display:flex;
+  font-family: essonnes-headline, serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-left: 1em;
+  border: 0.25px solid #707070;
+  background: white;
+  height: 85vh;
   overflow-y: scroll;
 }
 
+.logo {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: -10%;
+}
+.strapline {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 3%; 
+}
+.main-title {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 3%;
+}
+
+textarea {
+  max-width: 70vw;
+}
+
+.ui.selection.dropdown {
+  max-width: 70vw;
+}
+
 .background {
-  height: 100vh;
-  padding:1em;
-  background: #f3f3f3
+  height: 105vh;
+  padding: 1em;
+  background: #f3f3f3;
 }
 
 ul {
-  padding:0
+  padding: 0;
 }
 
-.selectedBrand {
+.ui.basic.button.log-out-button {
+  background-color :#ffffff !important;
+  margin-top: 5% !important;
+  margin-left:auto !important;
+}
+
+.selectedBrand,
+.productCard {
   flex-flow: column wrap;
   align-items: center !important;
   justify-content: center !important;
   align-self: center !important;
-margin:auto !important;
   max-width: 70vw !important;
   /* border-bottom: 0.25px solid rgba(34, 36, 38, 0.15) !important; */
   border-top: 0.25px solid #707070 !important;
-  box-shadow:none !important;
+  box-shadow: none !important;
   border-top: none !important;
-  padding-bottom:10% !important
-
+  padding-bottom: 10% !important;
+  margin: auto !important;
 }
 
-.ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input{
+.ui.form .field .ui.input,
+.ui.form .fields .field .ui.input,
+.ui.form .wide.field .ui.input,
+.search {
   width: 70vw !important;
+  margin: auto !important;
 }

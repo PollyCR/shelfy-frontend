@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import API from '../adapters/API'
 
 class LoginForm extends React.Component {
@@ -23,7 +23,8 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <Form
+      <div>
+        <Form
         onSubmit={this.submit}
         onChange={e => this.handleInputChange(e.target.name, e.target.value)}
       >
@@ -42,9 +43,10 @@ class LoginForm extends React.Component {
           autoComplete="password"
           value={this.state.password}
         />
-        <Form.Button>Submit</Form.Button>
-
+        <Form.Button basic >Submit</Form.Button>
       </Form>
+      <Button basic onClick= {() => this.props.history.push("/welcome")}>Go back</Button>
+      </div>
     )
   }
 }

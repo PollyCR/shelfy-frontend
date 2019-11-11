@@ -33,7 +33,11 @@ const BrandsContainer = props => {
 
   const handleRoutineClick = (event, product) => {
     event.persist()
-    API.addProduct({ ...product, routine: event.target.id, id: props.user.id }).then(() => props.history.push(`/${event.target.id}`))
+    // brand = 
+    let brand = props.brands.find(brand => brand.id=== product.brand_id)
+
+    API.addProductfromBrands({ ...product, brand: brand, routine: event.target.id, id: props.user.id })
+    .then(() => props.history.push(`/${event.target.id}`))
     // console.log({routine:event.target})
   };
 

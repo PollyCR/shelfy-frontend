@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Shelfy",
+  "name": "Shelfy: an app to create and manage your skincare routines",
   "icons": [
     {
       "src": "favicon.ico",

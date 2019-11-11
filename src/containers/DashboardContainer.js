@@ -71,7 +71,6 @@ this.props.history.push('/treatment')
     render() {
         return (
             <div>
-      <Link to="/logout"><Button basic className = "log-out-button">Logout</Button></Link>
       <Divider />
 <div>{this.getRoutine()}</div><Button.Group basic vertical size= "large">
                 <Button className = "am-routine-button" onClick = {this.handleAmClick}>AM</Button>
@@ -83,7 +82,7 @@ this.props.history.push('/treatment')
                 <Button className = "skin-diary-button" onClick = {this.handleDiaryClick}>Skin Diary</Button>
                 <Button className = "shopping-list-button" onClick = {this.handleListClick}>Shopping List</Button>
                 <Button className = "brands-button" onClick = {this.handleBrandsClick}>Brands</Button>
-                </Button.Group>
+                </Button.Group> <br />
                 </div>
         );
     }

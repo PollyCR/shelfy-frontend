@@ -44,6 +44,7 @@ export class treatmentRoutineContainer extends Component {
                 product={product}
                 user = {this.state.user}
                 history = {this.props.history}
+                routine = {"treatment"}
               />
           ))
         ) : (

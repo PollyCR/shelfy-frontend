@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
 export class SignupForm extends Component {
@@ -26,10 +26,14 @@ export class SignupForm extends Component {
 
   render() {
     return (
-      <Form
+      <div><Form
         onSubmit={this.submit}
         onChange={e => this.handleInputChange(e.target.name, e.target.value)}
       >
+        Welcome to Shelfy!<br />
+        When you sign up, please make sure that:
+        <ul>You submit a valid, unique email address</ul>
+        <ul>Your password is eight characters or longer</ul>
         <Form.Input
           name="display_name"
           type="display_name"
@@ -51,8 +55,9 @@ export class SignupForm extends Component {
           autoComplete="password"
           value={this.state.password}
         />
-        <Form.Button>Submit</Form.Button>
+        <Form.Button basic >Submit</Form.Button>
       </Form>
+            <Button basic onClick= {() => this.props.history.push("/welcome")}>Go back</Button></div>
     );
   }
 }

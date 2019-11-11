@@ -45,6 +45,7 @@ export class pmRoutineContainer extends Component {
                 user = {this.state.user}
                 history = {this.props.history}
                 brands = {this.props.brands}
+                routine = {"pm"}
               />
           ))
         ) : (

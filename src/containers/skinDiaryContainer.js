@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
 import { Button, Placeholder } from "semantic-ui-react";
-
 import AddDiaryEntryContainer from "./AddDiaryEntryContainer";
 
 class SkinDiaryContainer extends Component {
@@ -24,6 +23,23 @@ class SkinDiaryContainer extends Component {
     this.props.history.push("/dashboard");
   };
 
+  getRoutineType = entry => {
+    if (entry) {
+    if (entry.routine_type === "am") {
+      return "Morning";
+    } else if (entry.routine_type === "pm") {
+      return "Evening";
+    } else if (entry.routine_type === "treatment") {
+      return "Treatment";
+    }
+  }
+  };
+
+  getEntryTime = entry => {
+    let entryTime = entry.created_at.split("T")[0].split("-")
+    return `${entryTime[2]}/${entryTime[1]}/${entryTime[0]}`
+  }
+
   render() {
     return (
       <div>
@@ -33,14 +49,18 @@ class SkinDiaryContainer extends Component {
             history={this.props.history}
             user={this.props.user}
           />
-        ) : <Placeholder />}
+        ) : (
+          <Placeholder />
+        )}
         {this.state &&
         this.state.diary &&
         this.state.diary.entries &&
         this.state.diary.entries.length > 0
           ? this.state.diary.entries.map(entry => (
               <div key={entry.id}>
-                <h4>{entry.content}</h4>
+                <p>{this.getRoutineType(entry)}</p>
+                <p>{this.getEntryTime(entry)}</p>
+                <h4 className = "diary-entry">{entry.content}</h4>
                 <Button
                   id={entry.id}
                   onClick={this.handleDeleteClick}
@@ -52,7 +72,7 @@ class SkinDiaryContainer extends Component {
               </div>
             ))
           : null}{" "}
-          <br /> <Button onClick={this.handleBackClick}>Go back</Button>
+        <br /> <Button onClick={this.handleBackClick}>Go back</Button>
       </div>
     );
     // diary.length > 0 ? <h3>Hello</h3> :
