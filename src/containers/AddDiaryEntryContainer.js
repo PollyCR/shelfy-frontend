@@ -23,9 +23,9 @@ export class AddDiaryEntryContainer extends Component {
   };
   //
   routineOptions = [
-    { id: "am", key: "Morning", text: "Morning", value: "am" },
-    { id: "pm", key: "Evening", text: "Evening", value: "pm" },
-    { id: "treatment", key: "Treatment", text: "Treatment", value: "treatment" }
+    { id: "am", key: "Morning", text: "morning", value: "am" },
+    { id: "pm", key: "Evening", text: "evening", value: "pm" },
+    { id: "treatment", key: "Treatment", text: "treatment", value: "treatment" }
   ];
   render() {
     return (
@@ -33,7 +33,7 @@ export class AddDiaryEntryContainer extends Component {
         <Form onSubmit={this.handleSubmit}>
           <TextArea
             onChange={this.setEntry}
-            placeholder="Enter your diary entry here "
+            placeholder="how's your skin feeling today?"
           />{" "}
           <Form.Dropdown
             name="routine"
@@ -42,9 +42,9 @@ export class AddDiaryEntryContainer extends Component {
             selection
             onChange={this.setValues}
             options={this.routineOptions}
-            label="Routine"
+            label="routine"
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">submit</Button>
         </Form>
       </div>
     );

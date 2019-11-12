@@ -3,10 +3,11 @@ import MorningRoutine from '../components/MorningRoutine';
 import EveningRoutine from '../components/EveningRoutine'
 import {Button, Divider, } from 'semantic-ui-react'
 import API from '../adapters/API';
-import {Link} from 'react-router-dom'
 
 export class DashboardContainer extends Component {
-
+state = {
+    routine: null
+}
 
     componentDidMount = () => {
         API.validateUser().then(user => {
@@ -62,7 +63,7 @@ this.props.history.push('/treatment')
 
     getRoutine = () => {
        let currentTime = this.getTime()
-       if (currentTime >= 0 && currentTime < 12) {
+       if (currentTime >= 22 && currentTime < 10) {
     return <MorningRoutine user = {this.props.user}/> }
        else if (currentTime >=12) {
            return <EveningRoutine user = {this.props.user}/>}
@@ -73,15 +74,15 @@ this.props.history.push('/treatment')
             <div>
       <Divider />
 <div>{this.getRoutine()}</div><Button.Group basic vertical size= "large">
-                <Button className = "am-routine-button" onClick = {this.handleAmClick}>AM</Button>
-                <Button className = "pm-routine-button" onClick = {this.handlePmClick}>PM</Button>
-                <Button className = "treatment-routine-button" onClick = {this.handleTreatmentClick}>Treatment</Button>
+                <Button className = "am-routine-button" onClick = {this.handleAmClick}>am</Button>
+                <Button className = "pm-routine-button" onClick = {this.handlePmClick}>pm</Button>
+                <Button className = "treatment-routine-button" onClick = {this.handleTreatmentClick}>treatment</Button>
                 </Button.Group>
                 <Divider />
                 <Button.Group basic vertical size= "large">
-                <Button className = "skin-diary-button" onClick = {this.handleDiaryClick}>Skin Diary</Button>
-                <Button className = "shopping-list-button" onClick = {this.handleListClick}>Shopping List</Button>
-                <Button className = "brands-button" onClick = {this.handleBrandsClick}>Brands</Button>
+                <Button className = "skin-diary-button" onClick = {this.handleDiaryClick}>skin diary</Button>
+                <Button className = "shopping-list-button" onClick = {this.handleListClick}>shopping list</Button>
+                <Button className = "brands-button" onClick = {this.handleBrandsClick}>all brands</Button>
                 </Button.Group> <br />
                 </div>
         );

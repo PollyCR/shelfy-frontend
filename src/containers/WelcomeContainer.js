@@ -10,8 +10,8 @@ export class WelcomeContainer extends Component {
     render() {
         return (
             <div>
-<Link to ="/login"><Button>Log in</Button></Link>
-<Link to ="/signup"><Button>Sign up</Button></Link>
+<Link to ="/login"><Button basic>Log in</Button></Link>
+<Link to ="/signup"><Button basic>Sign up</Button></Link>
 </div>
         );
     }

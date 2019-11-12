@@ -49,13 +49,18 @@ class App extends React.Component {
     this.props.history.push("/welcome");
   };
 
+floatRight = {
+    'align-self':'right'
+  }
 
   render() {
     return (
       <div className = "background">
+              {this.state.user && !this.state.user.errors ? <div><Link style= {this.floatRight} to="/logout">Logout</Link><br /> </div>: null }
+
         <Container className = "main-container">
       <h1 className = "logo">Shelfy</h1>
-      <h4 className = "strapline">Your skin, made smarter</h4>
+      <h4 className = "strapline">Your skincare, but smarter.</h4>
           {routes.map(route => (
             <Route
               key={route.path}
@@ -81,7 +86,6 @@ class App extends React.Component {
             />
           ))}
       </Container>
-      <Link to="/logout"><Button margin-top="3%" basic className = "log-out-button">Logout</Button></Link>
       </div>
     );
   }

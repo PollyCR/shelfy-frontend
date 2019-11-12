@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
         onSubmit={this.submit}
         onChange={e => this.handleInputChange(e.target.name, e.target.value)}
       >
-        {this.state.error ? <div style={{color: 'black'}}>Invalid Email or Password. Please try again.</div> : null}
+        {this.state.error ? <div style={{color: 'black'}}>invalid email or password. please try again.</div> : null}
         <Form.Input
           name="email"
           type="email"
@@ -43,9 +43,9 @@ class LoginForm extends React.Component {
           autoComplete="password"
           value={this.state.password}
         />
-        <Form.Button basic >Submit</Form.Button>
+        <Form.Button basic >submit</Form.Button>
       </Form>
-      <Button basic onClick= {() => this.props.history.push("/welcome")}>Go back</Button>
+      <Button basic onClick= {() => this.props.history.push("/welcome")}>go back</Button>
       </div>
     )
   }

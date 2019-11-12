@@ -52,7 +52,7 @@ export class AddBrandProductContainer extends Component {
             required
             onChange={this.setActiveIngredients}
             name="active_ingredients"
-            label="Active ingredient(s)"
+            label="active ingredient(s)"
           />
           <Form.Dropdown
             name="routine"
@@ -61,9 +61,9 @@ export class AddBrandProductContainer extends Component {
             selection
             onChange={this.setRoutine}
             options={this.routineOptions}
-            label="Routine"
+            label="routine"
           />
-          <Button type="submit">Add product</Button>
+          <Button type="submit">add product</Button>
         </Form>
       </div>
     );

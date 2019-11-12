@@ -72,22 +72,22 @@ const BrandsContainer = props => {
                   <Button
                     onClick={() => handleListClick(props.user, product.id)}
                   >
-                    Add to list
+                    add to list
                   </Button>
                   <Button id="am" onClick={event => handleRoutineClick(event, product)}>
-                    Add to Morning Routine
+                    add to morning routine
                   </Button>
                   <Button
                     id="pm"
                     onClick={event => handleRoutineClick(event, product)}
                   >
-                    Add to Evening Routine
+                    add to evening routine
                   </Button>
                   <Button
                     id="treatment"
                     onClick={event => handleRoutineClick(event, product)}
                   >
-                    Add to Treatment Routine
+                    add to treatment routine
                   </Button>
                 </Button.Group>
               </div>
@@ -95,7 +95,7 @@ const BrandsContainer = props => {
         </Card>
       ) : null}
       {findBrands()}
-      <Button onClick={handleBackClick}>Go back</Button>
+      <Button onClick={handleBackClick}>go back</Button>
 
     </div>
     );
