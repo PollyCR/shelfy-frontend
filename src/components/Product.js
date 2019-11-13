@@ -4,9 +4,10 @@ import API from "../adapters/API";
 
 export class Product extends Component {
   handleListClick = () => {
-    API.addListProduct(this.props.user.id, this.props.product.id).then(() => {
-      API.getRoutine();
-    }, this.props.history.push("/list"));
+    API.addListProduct(this.props.user.id, this.props.product.id)
+      .then(() => API.getUser())
+      .then(this.props.history.push("/list"));
+    // .then(() => {API.getRoutine()})
   };
 
   getIngredients = () => {
@@ -17,7 +18,12 @@ export class Product extends Component {
   };
 
   getBrand = product => {
-    if (this.props.brands) {
+    if (
+      this.props.brands &&
+      this.props.brands.length > 0 &&
+      product &&
+      product.name
+    ) {
       return this.props.brands.find(brand => brand.id === product.brand_id)
         .name;
     }
@@ -26,8 +32,8 @@ export class Product extends Component {
   render() {
     return (
       <div>
-        {this.props.product && this.props.product.name ? (
-          <Card className="productCard">
+        {this.props.product ? (
+          <Card className="product-card">
             <Card.Content>
               <Card.Header>{this.props.product.name}</Card.Header>
               <Card.Description className="brandName">
@@ -40,7 +46,9 @@ export class Product extends Component {
               <Card.Description>
                 {this.props.product.product_type}
               </Card.Description>
-              <Card.Meta>{this.getIngredients()}</Card.Meta>
+              <Card.Meta className="activeIngredients">
+                {this.getIngredients()}
+              </Card.Meta>
               <Card.Content extra className="ui two buttons">
                 <Button basic onClick={this.handleListClick} color="green">
                   Running low!

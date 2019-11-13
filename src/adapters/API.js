@@ -23,7 +23,7 @@ const authHeader = (more = {}) => ({
 });
 
 const handleError = () => {
-  console.error("something went wrong");
+  console.log("Oops");
 };
 
 const getProducts = () => {
@@ -41,9 +41,8 @@ const getRoutine = (user, type) => {
     method: "POST",
     headers: headers(authHeader()),
     body: JSON.stringify({ routine: { user_id: user.id, routine_type: type } })
-  })
-    .then(resp => resp.json())
-    .then(console.log);
+  }).then(resp => resp.json());
+  // .then(console.log);
 };
 
 const handleServerResponse = res => {
@@ -154,7 +153,7 @@ const validateUser = () => {
     .then(handleServerResponse)
     .then(userDetails => {
       if (userDetails.errors) {
-        return { errors: ["something went wrong "] };
+        return { errors: ["That wasn't quite right. Please try again!"] };
       }
       if (userDetails.token) {
         localStorage.setItem("token", userDetails.token);
@@ -165,11 +164,18 @@ const validateUser = () => {
 };
 
 const addProduct = data => {
-  // console.log(data) }
+  // console.log(data);
   return fetch(ROUTINE_PRODUCTS_URL, {
     method: "POST",
     headers: headers(),
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+      product_name: data.product_name,
+      product_type: data.product_type,
+      brand: data.brand,
+      active_ingredients: data.active_ingredients,
+      user_id: data.id,
+      routine: data.routine
+    })
   }).then(resp => resp.json());
 };
 
@@ -201,9 +207,10 @@ const deleteListProduct = id => {
 
 const addProductfromBrands = data => {
   // console.log(data);
-  let ingredients = data.active_ingredients.map(
-    ingredient => ingredient.name).join(",")
-    // console.log(ingredients)
+  let ingredients = data.active_ingredients
+    .map(ingredient => ingredient.name)
+    .join(",");
+  // console.log(ingredients)
   return fetch(ROUTINE_PRODUCTS_URL, {
     method: "POST",
     headers: headers(),
@@ -213,7 +220,7 @@ const addProductfromBrands = data => {
       product_type: data.product_type,
       brand: data.brand.name,
       active_ingredients: ingredients,
-  product_name: data.name
+      product_name: data.name
     })
   }).then(resp => resp.json());
 };

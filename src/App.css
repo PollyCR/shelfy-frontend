@@ -12,20 +12,33 @@ html {
   margin: auto !important;
 }
 
-
-
-
 .activeIngredients {
+  font-family: source-code-pro, monospace;
   color: #707070;
   font-style: italic;
-  margin-top: -4%;
+}
+
+#log-out-link {
+  align-self: right;
 }
 
 .ui.vertical.buttons > .button {
   font-family: source-code-pro, monospace;
 
   font-weight: 400;
-  
+
+  font-style: italic;
+  margin: 1% !important;
+  min-width: 10em;
+  color: #707070 !important;
+  border: 0.01em solid #707070 !important;
+}
+
+.ui.vertical.buttons > .button::hover {
+  font-family: source-code-pro, monospace;
+
+  font-weight: 400;
+
   font-style: normal;
   margin: 1% !important;
   min-width: 10em;
@@ -37,13 +50,13 @@ html {
   text-align: center !important;
 }
 
-.ui.large.basic.vertical.buttons {
-  border:none !important;
+.ui.basic.vertical.buttons {
+  border: none !important;
 }
 
 .main-container {
   margin-left: 1em;
-  margin-top:0.8em;
+  margin-top: 0.8em;
   border: 1px solid #707070;
   background: white;
   height: 90vh;
@@ -55,17 +68,16 @@ html {
   margin-top: 0.4em !important;
 }
 .strapline {
-  margin-bottom: 3%; 
+  margin-bottom: 3%;
 }
 .main-title {
   margin-bottom: 3%;
-  font-size:1.8rem;
+  font-size: 1.8rem;
 }
 
 a {
-  color: #707070
+  color: #707070;
 }
-
 
 .background {
   height: 100vh;
@@ -76,8 +88,6 @@ a {
 ul {
   padding: 0;
 }
-
-
 
 .selectedBrand,
 .productCard {
@@ -94,10 +104,13 @@ ul {
   margin: auto !important;
 }
 
-.ui.selection.dropdown, .ui.form .field .ui.input,
+.ui.selection.dropdown,
+.ui.form .field .ui.input,
 .ui.form .fields .field .ui.input,
 .ui.form .wide.field .ui.input,
-.search, textarea {
+.search,
+textarea,
+.product-card {
   width: 70vw !important;
   margin: auto !important;
 }

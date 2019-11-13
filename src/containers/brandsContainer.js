@@ -32,12 +32,16 @@ const BrandsContainer = props => {
   };
 
   const handleRoutineClick = (event, product) => {
-    event.persist()
-    // brand = 
-    let brand = props.brands.find(brand => brand.id=== product.brand_id)
+    event.persist();
+    // brand =
+    let brand = props.brands.find(brand => brand.id === product.brand_id);
 
-    API.addProductfromBrands({ ...product, brand: brand, routine: event.target.id, id: props.user.id })
-    .then(() => props.history.push(`/${event.target.id}`))
+    API.addProductfromBrands({
+      ...product,
+      brand: brand,
+      routine: event.target.id,
+      id: props.user.id
+    }).then(() => props.history.push(`/${event.target.id}`));
     // console.log({routine:event.target})
   };
 
@@ -56,7 +60,7 @@ const BrandsContainer = props => {
     <div>
       <h1>Choose a brand...</h1>
       {selectedBrand ? (
-        <Card className = "selectedBrand" >
+        <Card className="selectedBrand">
           <h1>{brands.find(brand => brand.id === selectedBrand).name}</h1>
           {brands
             .find(brand => brand.id === selectedBrand)
@@ -65,8 +69,11 @@ const BrandsContainer = props => {
                 <ul>{product.name}</ul>
                 <ul>{product.product_type}</ul>
                 <ul className="activeIngredients">
-                  {" "}
-                  {product.active_ingredients.map(a_i => a_i.name).join(", ")}
+                  {product.active_ingredients
+                    .map(a_i => {
+                      return a_i.name.trim();
+                    })
+                    .join(", ")}
                 </ul>
                 <Button.Group vertical basic>
                   <Button
@@ -74,7 +81,10 @@ const BrandsContainer = props => {
                   >
                     add to list
                   </Button>
-                  <Button id="am" onClick={event => handleRoutineClick(event, product)}>
+                  <Button
+                    id="am"
+                    onClick={event => handleRoutineClick(event, product)}
+                  >
                     add to morning routine
                   </Button>
                   <Button
@@ -96,9 +106,8 @@ const BrandsContainer = props => {
       ) : null}
       {findBrands()}
       <Button onClick={handleBackClick}>go back</Button>
-
     </div>
-    );
+  );
 };
 
 export default BrandsContainer;

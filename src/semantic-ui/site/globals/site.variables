@@ -4,3 +4,4 @@
 
 @defaultBorderRadius: 0px; 
 @defaultBorder: none;
+@fontName: 'Montserrat';
