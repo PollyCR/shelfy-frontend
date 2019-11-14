@@ -11,15 +11,18 @@ export class ShoppingListProduct extends Component {
 
   render() {
     return this.props.product ? (
-      <Card key={this.props.product.id}>
+      <Card className="product-card" key={this.props.product.id}>
+        
         <Card.Header>{this.props.product.name}</Card.Header>
         <Card.Meta>{this.props.product.product_type}</Card.Meta>
 
         <Button
+          basic
+          color="grey"
           key={this.props.product.id}
           onClick={() => this.handleDeleteClick()}
         >
-          Purchased
+          purchased
         </Button>
       </Card>
     ) : null;

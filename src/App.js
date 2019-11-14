@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { routes } from "./config/routes";
 import { Link, Route } from "react-router-dom";
-import { Container, Message, Placeholder } from "semantic-ui-react";
+import { Container, Message } from "semantic-ui-react";
 import API from "./adapters/API";
 import "semantic-ui-less/semantic.less";
 
@@ -88,8 +88,8 @@ class App extends React.Component {
         {this.logOutOrError()}
 
         <Container className="main-container">
-          <h1 className="logo">Shelfy</h1>
-          <h4 className="strapline">Your skincare, but smarter.</h4>
+          <h1 className="logo">SHELFY</h1>
+          <h4 className="strapline">your skincare, but smarter.</h4>
           {routes.map(route => (
             <Route
               key={route.path}

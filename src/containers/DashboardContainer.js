@@ -28,7 +28,9 @@ export class DashboardContainer extends Component {
   handleClick = e => {
     e.persist();
     e.preventDefault();
-    this.props.history.push(`/${e.target.value}`);
+    this.props
+      .setUserState()
+      .then(() => this.props.history.push(`/${e.target.value}`));
   };
 
   getRoutine = () => {

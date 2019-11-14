@@ -8,12 +8,12 @@ export class WelcomeContainer extends Component {
       <div>
         <Link to="/login">
           <Button className="log-in-or-sign-up" basic>
-            Log in
+            log in
           </Button>
         </Link>
         <Link to="/signup">
           <Button className="log-in-or-sign-up" basic>
-            Sign up
+            sign up
           </Button>
         </Link>
       </div>

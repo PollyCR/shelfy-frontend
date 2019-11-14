@@ -86,6 +86,21 @@ html {
   overflow-y: scroll;
 }
 
+.product-listing:last-child {
+  margin-bottom: 10%;
+}
+
+.sign-up-rules {
+  margin-top: -1.5rem !important;
+  line-height: 0.95rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+}
+
+.sign-up-rules-li {
+  margin-top: 0.3rem;
+}
+
 .logo {
   margin-top: 0.4em !important;
   font-weight: 900;
@@ -95,8 +110,7 @@ html {
 }
 .strapline {
   font-weight: 400;
-  margin-bottom: 3%;
-  margin-top: -1%;
+  margin-top: -1.5rem;
 }
 .main-title {
   margin: 3%;

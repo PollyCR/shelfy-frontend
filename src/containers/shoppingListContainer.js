@@ -4,27 +4,18 @@ import ShoppingListProduct from "../components/ShoppingListProduct";
 import { Button, Loader } from "semantic-ui-react";
 
 export class ShoppingListContainer extends Component {
-  state = { list_products: [], products: [] };
-
-  componentDidMount = () => {
-    if (this.props.user) {
-      API.getUser(this.props.user.id).then(data => {
-        this.setState({ list_products: data.list_products });
-      });
-    }
-  };
-
   handleBackClick = () => {
     this.props.history.push("/dashboard");
   };
   render() {
     return (
       <div>
-        <h1>Shopping List</h1>
+        <h1 className="main-title">Shopping List</h1>
 
-        {this.props.user && this.state.list_products ? (
-          this.state.list_products.map(lp => (
+        {this.props.user && this.props.user.list_products ? (
+          this.props.user.list_products.map(lp => (
             <ShoppingListProduct
+              className="product-card"
               key={lp.id}
               history={this.props.history}
               list_product={lp}
@@ -37,7 +28,9 @@ export class ShoppingListContainer extends Component {
         ) : (
           <Loader active />
         )}
-        <Button onClick={this.handleBackClick}>Go back</Button>
+        <Button basic color="grey" onClick={this.handleBackClick}>
+          go back
+        </Button>
       </div>
     );
   }
