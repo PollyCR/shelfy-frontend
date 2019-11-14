@@ -14,7 +14,7 @@ export class amRoutineContainer extends Component {
   };
 
   handleDeleteClick = id => {
-    API.deleteRoutineProduct(id).then(() => this.getRoutine());
+    API.deleteRoutineProduct(id).then(() => this.props.setUserState());
   };
 
   getRoutine = () => {
@@ -44,6 +44,7 @@ export class amRoutineContainer extends Component {
     ) {
       return this.state.products.map(product => (
         <ProductComponent
+          setProducts={this.props.setProducts}
           className="productCard"
           handleDeleteClick={this.handleDeleteClick}
           key={product.id}

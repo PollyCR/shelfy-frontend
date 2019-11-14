@@ -34,9 +34,19 @@ export class DashboardContainer extends Component {
   getRoutine = () => {
     let currentTime = this.getTime();
     if (currentTime >= 22 || currentTime < 10) {
-      return <MorningRoutine user={this.props.user} />;
+      return (
+        <MorningRoutine
+          setProducts={this.props.setProducts}
+          user={this.props.user}
+        />
+      );
     } else {
-      return <EveningRoutine user={this.props.user} />;
+      return (
+        <EveningRoutine
+          setProducts={this.props.setProducts}
+          user={this.props.user}
+        />
+      );
     }
   };
   render() {

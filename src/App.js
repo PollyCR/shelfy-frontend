@@ -33,21 +33,27 @@ class App extends React.Component {
     }
   };
 
-  componentDidMount() {
-    API.validateUser().then(
+  setUserState = () => {
+    return API.validateUser().then(
       user => {
         this.setState({ user });
         // console.log(user)
         if (!user || (user && user.errors)) {
           this.props.history.push("/welcome");
-        } else if (user) {
-          this.props.history.push("/dashboard");
         }
       },
-      API.getBrands().then(data => this.setState({ brands: data })),
-      API.getProducts().then(data => this.setState({ products: data }))
+      API.getBrands()
+        .then(data => this.setState({ brands: data }))
+        .then(this.setProducts)
     );
+  };
+
+  componentDidMount() {
+    this.setUserState();
   }
+
+  setProducts = () =>
+    API.getProducts().then(data => this.setState({ products: data }));
 
   handleRoutineClick = product => {
     this.setState({ selectedProduct: product });
@@ -93,12 +99,14 @@ class App extends React.Component {
                 route.component ? (
                   <route.component
                     {...routerProps}
+                    setUserState={this.setUserState}
                     user={this.state.user}
                     login={this.login}
                     errors={this.state.errors}
                     logout={this.logout}
                     signup={this.signup}
                     setUser={this.setUser}
+                    setProducts={this.setProducts}
                     handleRoutineClick={this.handleRoutineClick}
                     brands={this.state.brands}
                     products={this.state.products}

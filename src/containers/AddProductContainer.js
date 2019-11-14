@@ -14,7 +14,7 @@ export class AddProductContainer extends Component {
   handleSubmit = event => {
     event.persist();
     API.addProduct({ ...this.state, id: this.props.user.id })
-      .then(() => API.getUser(this.props.user.id))
+      .then(() => API.getUserState)
       .then(() => this.props.history.push(`/${this.state.routine}`));
 
     // API.getRoutine(this.props.user, this.state.routine);

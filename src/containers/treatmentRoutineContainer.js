@@ -13,7 +13,7 @@ export class treatmentRoutineContainer extends Component {
   };
 
   handleDeleteClick = id => {
-    API.deleteRoutineProduct(id).then(() => this.getRoutine());
+    API.deleteRoutineProduct(id).then(() => this.props.setUserState());
   };
 
   getRoutine = () => {

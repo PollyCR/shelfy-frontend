@@ -14,7 +14,7 @@ export class pmRoutineContainer extends Component {
   };
 
   handleDeleteClick = id => {
-    API.deleteRoutineProduct(id).then(() => this.getRoutine());
+    API.deleteRoutineProduct(id).then(() => this.props.setUserState());
   };
 
   getRoutine = () => {
@@ -27,7 +27,7 @@ export class pmRoutineContainer extends Component {
   };
 
   handleBackClick = () => {
-    API.getUser(this.props.user.id).then(this.props.history.push("/dashboard"));
+    this.props.setUserState().then(() => this.props.history.push("/dashboard"));
   };
 
   handleAddProductClick = () => {
@@ -45,6 +45,7 @@ export class pmRoutineContainer extends Component {
       return this.state.products.map(product => (
         <ProductComponent
           className="productCard"
+          setProducts={this.props.setProducts}
           handleDeleteClick={this.handleDeleteClick}
           key={product.id}
           product={product}

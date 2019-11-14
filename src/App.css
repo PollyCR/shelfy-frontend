@@ -94,7 +94,7 @@ html {
   font-family: "didot";
 }
 .strapline {
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 3%;
   margin-top: -1%;
 }
@@ -128,11 +128,6 @@ ul {
   border-top: none !important;
   padding-bottom: 10% !important;
   margin: auto !important;
-}
-
-.h1 {
-  font-family: "didot" !important;
-  font-style: italic !important;
 }
 
 .ui.green.basic.button.running-low-button,
