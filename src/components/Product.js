@@ -13,7 +13,7 @@ export class Product extends Component {
   getIngredients = () => {
     return this.props.user.products
       .filter(product => product.id === this.props.product.id)[0]
-      .active_ingredients.map(ingredient => ingredient.name)
+      .active_ingredients.map(ingredient => ingredient.name.toLowerCase())
       .join(", ");
   };
 
@@ -58,7 +58,7 @@ export class Product extends Component {
                   onClick={this.handleListClick}
                   color="green"
                 >
-                  Running low!
+                  running low!
                 </Button>
                 <Button
                   className="delete-product-button"
@@ -68,7 +68,7 @@ export class Product extends Component {
                   basic
                   color="grey"
                 >
-                  Delete product
+                  delete product
                 </Button>
               </Card.Content>
             </Card.Content>

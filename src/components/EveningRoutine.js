@@ -14,7 +14,7 @@ const EveningRoutine = props => {
       {props.user && props.user.display_name ? (
         <div>
           <h1 className="main-title">
-            Your next routine will be this evening,{" "}
+            Your evening routine is coming up,{" "}
             {props.user.display_name.charAt(0).toUpperCase() +
               props.user.display_name.slice(1)}
             !

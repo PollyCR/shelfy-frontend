@@ -1,7 +1,6 @@
 import { Button, TextArea, Form } from "semantic-ui-react";
 import API from "../adapters/API";
 import React, { Component } from "react";
-import Skinscore from "../components/Skinscore";
 
 export class AddDiaryEntryContainer extends Component {
   state = { routine: null, entry: null };
@@ -9,8 +8,7 @@ export class AddDiaryEntryContainer extends Component {
     API.postEntry(
       this.props.user.id,
       this.state.routine,
-      this.state.entry,
-      this.state.rating
+      this.state.entry
     ).then(() => {
       this.props.history.push("/diary");
     });
@@ -54,7 +52,6 @@ export class AddDiaryEntryContainer extends Component {
             options={this.routineOptions}
             label="routine"
           />
-          <Skinscore />
           <Button basic type="submit">
             submit
           </Button>

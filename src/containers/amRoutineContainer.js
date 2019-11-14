@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
-import { Button, Card, Container, Loader } from "semantic-ui-react";
+import { Button, Container, Loader } from "semantic-ui-react";
 import ProductComponent from "../components/Product";
 
 export class amRoutineContainer extends Component {
@@ -27,7 +27,7 @@ export class amRoutineContainer extends Component {
   };
 
   handleBackClick = () => {
-    this.props.history.push("/dashboard");
+    API.getUser(this.props.user.id).then(this.props.history.push("/dashboard"));
   };
 
   handleAddProductClick = () => {

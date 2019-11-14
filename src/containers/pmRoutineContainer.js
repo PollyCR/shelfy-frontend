@@ -27,7 +27,7 @@ export class pmRoutineContainer extends Component {
   };
 
   handleBackClick = () => {
-    this.props.history.push("/dashboard");
+    API.getUser(this.props.user.id).then(this.props.history.push("/dashboard"));
   };
 
   handleAddProductClick = () => {

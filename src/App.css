@@ -130,6 +130,11 @@ ul {
   margin: auto !important;
 }
 
+.h1 {
+  font-family: "didot" !important;
+  font-style: italic !important;
+}
+
 .ui.green.basic.button.running-low-button,
 .ui.grey.basic.button.delete-product-button {
   font-family: source-code-pro;

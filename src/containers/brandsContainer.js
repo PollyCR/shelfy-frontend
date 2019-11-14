@@ -71,7 +71,7 @@ const BrandsContainer = props => {
                 <ul className="activeIngredients">
                   {product.active_ingredients
                     .map(a_i => {
-                      return a_i.name.trim();
+                      return a_i.name.trim().toLowerCase();
                     })
                     .join(", ")}
                 </ul>

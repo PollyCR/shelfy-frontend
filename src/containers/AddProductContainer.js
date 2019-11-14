@@ -13,9 +13,9 @@ export class AddProductContainer extends Component {
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id }).then(() =>
-      this.props.history.push(`/${this.state.routine}`)
-    );
+    API.addProduct({ ...this.state, id: this.props.user.id })
+      .then(() => API.getUser(this.props.user.id))
+      .then(() => this.props.history.push(`/${this.state.routine}`));
 
     // API.getRoutine(this.props.user, this.state.routine);
   };
@@ -57,7 +57,7 @@ export class AddProductContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Add a Product...</h1>
+        <h1 class="main-title">Add a Product...</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
             required
@@ -70,6 +70,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             name="brand"
             label="Brand"
+            className= "product-input"
           />
           <Form.Dropdown
             name="product_type"
@@ -80,6 +81,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             options={this.productTypeOptions}
             label="Product type"
+            className= "product-input"
           />
           <Form.Input
             required
@@ -96,6 +98,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             options={this.routineOptions}
             label="Routine"
+            className= "product-input"
           />
           <Button basic type="submit">
             add product

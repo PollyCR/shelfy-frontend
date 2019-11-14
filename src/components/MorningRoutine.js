@@ -10,6 +10,12 @@ export class MorningRoutine extends Component {
       </ul>
     ));
   };
+
+  componentDidMount = () => {
+    if (this.props.user && this.props.user.id) {
+      API.getUser(this.props.user.id);
+    }
+  };
   render() {
     return (
       <div>
@@ -21,7 +27,7 @@ export class MorningRoutine extends Component {
                 this.props.user.display_name.slice(1)}
               !
             </h1>
-            <p>It's time for...</p>
+            <p>It's time for your morning routine.</p>
             <div>{this.getProducts()}</div>
           </div>
         ) : (

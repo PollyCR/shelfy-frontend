@@ -74,8 +74,7 @@ class SkinDiaryContainer extends Component {
                       this.handleClick(e, entry.id);
                     }}
                   >
-                    {this.getEntryTime(entry)}/{this.getRoutineType(entry)}/
-                    {this.skin_score ? this.skin_score : null}
+                    {this.getEntryTime(entry)}/{this.getRoutineType(entry)}
                   </Accordion.Title>
                   <Accordion.Content
                     active={this.state.activeIndex === entry.id}
