@@ -51,7 +51,6 @@ class SkinDiaryContainer extends Component {
     return (
       <div>
         {this.state && this.state.diary ? (
-          // console.log("hi")
           <AddDiaryEntryContainer
             history={this.props.history}
             user={this.props.user}

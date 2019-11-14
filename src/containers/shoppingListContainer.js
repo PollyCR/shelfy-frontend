@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import API from "../adapters/API";
-import ShoppingListProduct from "../components/ShoppingListProduct";
+import ShoppingListProduct from "../Components/ShoppingListProduct";
 import { Button, Loader } from "semantic-ui-react";
 
 export class ShoppingListContainer extends Component {
@@ -10,7 +9,7 @@ export class ShoppingListContainer extends Component {
   render() {
     return (
       <div>
-        <h1 className="main-title">Shopping List</h1>
+        <h1 className="main-title">shopping list</h1>
 
         {this.props.user && this.props.user.list_products ? (
           this.props.user.list_products.map(lp => (

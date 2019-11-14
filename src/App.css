@@ -12,6 +12,9 @@ html {
   margin: auto !important;
 }
 
+.app-intro {
+  margin: 1rem;
+}
 .activeIngredients {
   color: #707070;
   font-style: italic;

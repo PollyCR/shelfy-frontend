@@ -1,4 +1,4 @@
-const BASE_URL = "http://shelfy-backend.herokuapp.com";
+const BASE_URL = "http://localhost:3000/";
 
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
@@ -128,7 +128,7 @@ const deleteRoutineProduct = id => {
   });
 };
 
-const postEntry = (user, routine, entry, skin_score) => {
+const postEntry = (user, routine, entry) => {
   // console.log(user)
   // console.log(routine)
   // console.log(entry)
@@ -138,8 +138,7 @@ const postEntry = (user, routine, entry, skin_score) => {
     body: JSON.stringify({
       user: user,
       routine: routine,
-      entry: entry,
-      skin_score: skin_score
+      entry: entry
     })
   });
 };

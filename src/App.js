@@ -40,6 +40,8 @@ class App extends React.Component {
         // console.log(user)
         if (!user || (user && user.errors)) {
           this.props.history.push("/welcome");
+        } else {
+          this.props.history.push("/dashboard");
         }
       },
       API.getBrands()

@@ -38,6 +38,7 @@ export class AddDiaryEntryContainer extends Component {
   render() {
     return (
       <div>
+        <h1 className="main-title">skin diary</h1>
         <Form onSubmit={this.handleSubmit}>
           <TextArea
             onChange={this.setEntry}

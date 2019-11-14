@@ -12,7 +12,6 @@ export class ShoppingListProduct extends Component {
   render() {
     return this.props.product ? (
       <Card className="product-card" key={this.props.product.id}>
-        
         <Card.Header>{this.props.product.name}</Card.Header>
         <Card.Meta>{this.props.product.product_type}</Card.Meta>
 

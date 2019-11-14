@@ -26,49 +26,48 @@ export class SignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <Form
-          onSubmit={this.submit}
-          onChange={e => this.handleInputChange(e.target.name, e.target.value)}
-        >
-          <h1 class="main-title">Welcome to Shelfy!</h1>
-          <br />
-          <p class="sign-up-rules">
-            When you sign up, please make sure that:
-            <li class="sign-up-rules-li">
-              You submit a valid, unique email address
-            </li>
-            <li class="sign-up-rules-li">
-              Your password is eight characters or longer
-            </li>
-          </p>
-          <Form.Input
-            name="display_name"
-            type="display_name"
-            placeholder="Please enter your name here!"
-            autoComplete="name"
-            value={this.state.display_name}
-          />
-          <Form.Input
-            name="email_address"
-            type="email"
-            placeholder="Please enter your email address here!"
-            autoComplete="email"
-            value={this.state.email_address}
-          />
-          <Form.Input
-            name="password"
-            type="password"
-            placeholder="Please enter your password here!"
-            autoComplete="password"
-            value={this.state.password}
-          />
-          <Form.Button basic>Submit</Form.Button>
-        </Form>
+      <Form
+        onSubmit={this.submit}
+        onChange={e => this.handleInputChange(e.target.name, e.target.value)}
+      >
+        <h1 class="main-title">welcome to Shelfy!</h1>
+        <br />
+        <p class="sign-up-rules">
+          when you sign up, please make sure that:
+          <li class="sign-up-rules-li">
+            you submit a valid, unique email address
+          </li>
+          <li class="sign-up-rules-li">
+            your password is eight characters or longer
+          </li>
+        </p>
+        <Form.Input
+          name="display_name"
+          type="display_name"
+          placeholder="please enter your name here!"
+          autoComplete="name"
+          value={this.state.display_name}
+        />
+        <Form.Input
+          name="email_address"
+          type="email"
+          placeholder="please enter your email address here!"
+          autoComplete="email"
+          value={this.state.email_address}
+        />
+        <Form.Input
+          name="password"
+          type="password"
+          placeholder="please enter your password here!"
+          autoComplete="password"
+          value={this.state.password}
+        />
+        <Form.Button basic>submit</Form.Button>
+
         <Button basic onClick={() => this.props.history.push("/welcome")}>
-          Go back
+          go back
         </Button>
-      </div>
+      </Form>
     );
   }
 }

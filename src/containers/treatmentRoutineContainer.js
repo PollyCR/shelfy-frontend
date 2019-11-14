@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
 import { Loader, Container, Button } from "semantic-ui-react";
-import ProductComponent from "../components/Product";
+import Product from "../Components/Product";
 
 export class treatmentRoutineContainer extends Component {
   state = {
@@ -42,7 +42,7 @@ export class treatmentRoutineContainer extends Component {
       this.state.products.length > 0
     ) {
       return this.state.products.map(product => (
-        <ProductComponent
+        <Product
           className="productCard"
           handleDeleteClick={this.handleDeleteClick}
           key={product.id}

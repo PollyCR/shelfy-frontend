@@ -70,7 +70,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             name="brand"
             label="Brand"
-            className= "product-input"
+            className="product-input"
           />
           <Form.Dropdown
             name="product_type"
@@ -81,7 +81,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             options={this.productTypeOptions}
             label="Product type"
-            className= "product-input"
+            className="product-input"
           />
           <Form.Input
             required
@@ -98,7 +98,7 @@ export class AddProductContainer extends Component {
             onChange={this.setValues}
             options={this.routineOptions}
             label="Routine"
-            className= "product-input"
+            className="product-input"
           />
           <Button basic type="submit">
             add product

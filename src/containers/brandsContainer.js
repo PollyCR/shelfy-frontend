@@ -58,10 +58,12 @@ const BrandsContainer = props => {
 
   return (
     <div>
-      <h1>Choose a brand...</h1>
+      <h1 className="main-title">choose a brand...</h1>
       {selectedBrand ? (
         <Card className="selectedBrand">
-          <h1>{brands.find(brand => brand.id === selectedBrand).name}</h1>
+          <h1 className="main-title">
+            {brands.find(brand => brand.id === selectedBrand).name}
+          </h1>
           {brands
             .find(brand => brand.id === selectedBrand)
             .products.map(product => (

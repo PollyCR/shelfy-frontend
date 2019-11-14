@@ -1,18 +1,22 @@
-import LoginForm from "../components/LoginForm";
-import SignupForm from "../components/SignupForm";
-import WelcomeContainer from "../containers/WelcomeContainer";
-import DashboardContainer from "../containers/DashboardContainer";
-import AMRoutineContainer from "../containers/amRoutineContainer";
-import pmRoutineContainer from "../containers/pmRoutineContainer";
-import TreatmentRoutineContainer from "../containers/treatmentRoutineContainer";
-import SkinDiaryContainer from "../containers/SkinDiaryContainer";
-import brandsContainer from "../containers/brandsContainer";
-import ShoppingListContainer from "../containers/ShoppingListContainer";
-import AddProductContainer from '../containers/AddProductContainer'
-import addBrandProductContainer from '../containers/AddBrandProductContainer'
+import LoginForm from "../Components/LoginForm";
+import SignupForm from "../Components/SignupForm";
+import WelcomeContainer from "../Containers/WelcomeContainer";
+import DashboardContainer from "../Containers/DashboardContainer";
+import AMRoutineContainer from "../Containers/amRoutineContainer";
+import pmRoutineContainer from "../Containers/pmRoutineContainer";
+import TreatmentRoutineContainer from "../Containers/treatmentRoutineContainer";
+import SkinDiaryContainer from "../Containers/SkinDiaryContainer";
+import brandsContainer from "../Containers/brandsContainer";
+import ShoppingListContainer from "../Containers/ShoppingListContainer";
+import AddProductContainer from "../Containers/AddProductContainer";
+import AddBrandProductContainer from "../Containers/AddBrandProductContainer";
 
 export const routes = [
-  { title: "Add to routine", path: "/brands/add", component: addBrandProductContainer },
+  {
+    title: "Add to routine",
+    path: "/brands/add",
+    component: AddBrandProductContainer
+  },
   { title: "Skin diary", path: "/diary", component: SkinDiaryContainer },
   { title: "List", path: "/list", component: ShoppingListContainer },
   { title: "Brands you ♥️", path: "/brands", component: brandsContainer },
