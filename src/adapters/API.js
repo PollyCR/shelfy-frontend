@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "http://shelfy-backend.herokuapp.com";
 
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
@@ -11,6 +11,7 @@ const LIST_PRODUCTS_URL = `${BASE_URL}api/v1/list_products`;
 const ENTRIES_URL = `${BASE_URL}api/v1/entries`;
 const USERS_URL = `${BASE_URL}api/v1/users`;
 const PRODUCTS_URL = `${BASE_URL}api/v1/products`;
+const ROUTINES_URL = `${BASE_URL}api/v1/routines`;
 
 const headers = (more = {}) => ({
   "Content-Type": "application/json",
@@ -37,7 +38,7 @@ const getProducts = () => {
 const getRoutine = (user, type) => {
   // console.log(user)
   // console.log(type)
-  return fetch("http://localhost:3000/api/v1/routines", {
+  return fetch(ROUTINES_URL, {
     method: "POST",
     headers: headers(authHeader()),
     body: JSON.stringify({ routine: { user_id: user.id, routine_type: type } })
