@@ -13,9 +13,9 @@ export class AddProductContainer extends Component {
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id })
-      .then(() => API.getUser(this.props.user.id))
-      .then(() => this.props.history.push(`/${this.state.routine}`));
+    API.addProduct({ ...this.state, id: this.props.user.id }).then(() =>
+      this.props.history.push(`/${this.state.routine}`)
+    );
 
     // API.getRoutine(this.props.user, this.state.routine);
   };
@@ -97,7 +97,16 @@ export class AddProductContainer extends Component {
             options={this.routineOptions}
             label="Routine"
           />
-          <Button type="submit">Add product</Button>
+          <Button basic type="submit">
+            add product
+          </Button>
+          <Button
+            basic
+            color="grey"
+            onClick={() => this.props.history.goBack()}
+          >
+            go back
+          </Button>
         </Form>
       </div>
     );

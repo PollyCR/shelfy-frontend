@@ -1,5 +1,5 @@
 .brandName {
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .App {
@@ -13,13 +13,36 @@ html {
 }
 
 .activeIngredients {
-  font-family: source-code-pro, monospace;
   color: #707070;
   font-style: italic;
+  font-family: "didot";
+  font-weight: 700;
+}
+.ui.basic.button {
+  color: grey !important;
+}
+
+.ui.basic.button:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+.product-name {
+  font-family: "didot" !important;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem !important;
 }
 
 #log-out-link {
-  align-self: right;
+  align-self: flex-end;
+  color: #101010;
+  font-size: 0.8rem;
+}
+
+#log-out-link-container {
+  margin-left: 75%;
+  text-align: center;
 }
 
 .ui.vertical.buttons > .button {
@@ -46,12 +69,12 @@ html {
   border: 0.01em solid #707070 !important;
 }
 
-.centered {
-  text-align: center !important;
-}
-
 .ui.basic.vertical.buttons {
   border: none !important;
+}
+
+.ui.basic.vertical.buttons.button:first-child {
+  margin-top: 2%;
 }
 
 .main-container {
@@ -64,25 +87,28 @@ html {
 }
 
 .logo {
-  margin-bottom: -10%;
   margin-top: 0.4em !important;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 3rem;
+  font-family: "didot";
 }
 .strapline {
+  font-weight: 300;
   margin-bottom: 3%;
+  margin-top: -1%;
 }
 .main-title {
-  margin-bottom: 3%;
-  font-size: 1.8rem;
-}
-
-a {
-  color: #707070;
+  margin: 3%;
+  color: #505050;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .background {
   height: 100vh;
   padding: 1em;
-  background: #f3f3f3;
+  background: #fff7f8;
 }
 
 ul {
@@ -104,6 +130,13 @@ ul {
   margin: auto !important;
 }
 
+.ui.green.basic.button.running-low-button,
+.ui.grey.basic.button.delete-product-button {
+  font-family: source-code-pro;
+  font-style: italic;
+  font-weight: 300;
+}
+
 .ui.selection.dropdown,
 .ui.form .field .ui.input,
 .ui.form .fields .field .ui.input,
@@ -113,4 +146,14 @@ textarea,
 .product-card {
   width: 70vw !important;
   margin: auto !important;
+}
+
+.product-listing {
+  color: #101010;
+  margin-bottom: -1%;
+}
+
+.diary-info {
+  font-family: "didot" !important;
+  font-style: italic;
 }

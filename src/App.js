@@ -6,7 +6,9 @@ import { Container, Message, Placeholder } from "semantic-ui-react";
 import API from "./adapters/API";
 import "semantic-ui-less/semantic.less";
 
-const notFoundMessage = () => <Message negative>NOT FOUND</Message>;
+const notFoundMessage = () => {
+  return <Message negative>NOT FOUND</Message>;
+};
 
 class App extends React.Component {
   state = {
@@ -19,7 +21,7 @@ class App extends React.Component {
   logOutOrError = () => {
     if (this.state.user && !this.state.user.errors) {
       return (
-        <div>
+        <div id="log-out-link-container">
           <Link id="log-out-link" to="/logout">
             Logout
           </Link>
@@ -27,7 +29,7 @@ class App extends React.Component {
         </div>
       );
     } else if (this.state.user && this.state.errors === true) {
-      return <Message>Invalid email or password. Please try again!</Message>;
+      return <Message>invalid email or password. please try again!</Message>;
     }
   };
 
@@ -36,7 +38,7 @@ class App extends React.Component {
       user => {
         this.setState({ user });
         // console.log(user)
-        if (user && user.errors) {
+        if (!user || (user && user.errors)) {
           this.props.history.push("/welcome");
         } else if (user) {
           this.props.history.push("/dashboard");

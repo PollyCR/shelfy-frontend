@@ -3,9 +3,10 @@ import API from "../adapters/API";
 import { Form, Button } from "semantic-ui-react";
 
 export class AddBrandProductContainer extends Component {
-  state = { 
-      product: null,
-      brand_id: null };
+  state = {
+    product: null,
+    brand_id: null
+  };
 
   componentDidMount = () => {
     if (this.props.selectedProduct) {
@@ -26,11 +27,10 @@ export class AddBrandProductContainer extends Component {
 
   handleSubmit = event => {
     event.persist();
-    API.addProduct({ ...this.state, id: this.props.user.id });
-    // .then(() => {
-    //   this.props.history.push(`/${this.state.routine}`);
-    // });
-    // API.getRoutine(this.props.user, this.state.routine);
+    API.addProduct({ ...this.state, id: this.props.user.id }).then(() => {
+      this.props.history.push(`/${this.state.routine}`);
+    });
+    API.getRoutine(this.props.user, this.state.routine);
   };
 
   routineOptions = [
@@ -38,7 +38,6 @@ export class AddBrandProductContainer extends Component {
     { id: "pm", key: "Evening", text: "Evening", value: "pm" },
     { id: "treatment", key: "Treatment", text: "Treatment", value: "treatment" }
   ];
-
 
   setRoutine = (e, value) => {
     this.setState({ routine: value.value });

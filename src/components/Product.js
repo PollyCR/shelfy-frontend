@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Placeholder } from "semantic-ui-react";
+import { Card, Button, Loader } from "semantic-ui-react";
 import API from "../adapters/API";
 
 export class Product extends Component {
@@ -32,15 +32,17 @@ export class Product extends Component {
   render() {
     return (
       <div>
-        {this.props.product ? (
+        {this.props.product && this.props.product.name ? (
           <Card className="product-card">
             <Card.Content>
-              <Card.Header>{this.props.product.name}</Card.Header>
+              <Card.Header className="product-name">
+                {this.props.product.name}
+              </Card.Header>
               <Card.Description className="brandName">
                 {this.props.product ? (
                   this.getBrand(this.props.product)
                 ) : (
-                  <Placeholder />
+                  <Loader active />
                 )}
               </Card.Description>
               <Card.Description>
@@ -50,15 +52,21 @@ export class Product extends Component {
                 {this.getIngredients()}
               </Card.Meta>
               <Card.Content extra className="ui two buttons">
-                <Button basic onClick={this.handleListClick} color="green">
+                <Button
+                  basic
+                  className="running-low-button"
+                  onClick={this.handleListClick}
+                  color="green"
+                >
                   Running low!
                 </Button>
                 <Button
+                  className="delete-product-button"
                   onClick={() => {
                     this.props.handleDeleteClick(this.props.product.id);
                   }}
                   basic
-                  color="red"
+                  color="grey"
                 >
                   Delete product
                 </Button>
@@ -66,7 +74,7 @@ export class Product extends Component {
             </Card.Content>
           </Card>
         ) : (
-          <Placeholder />
+          <Loader active />
         )}
       </div>
     );

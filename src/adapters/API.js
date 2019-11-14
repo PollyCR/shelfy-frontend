@@ -127,14 +127,19 @@ const deleteRoutineProduct = id => {
   });
 };
 
-const postEntry = (user, routine, entry) => {
+const postEntry = (user, routine, entry, skin_score) => {
   // console.log(user)
   // console.log(routine)
   // console.log(entry)
   return fetch(ENTRIES_URL, {
     method: "POST",
     headers: headers(authHeader()),
-    body: JSON.stringify({ user: user, routine: routine, entry: entry })
+    body: JSON.stringify({
+      user: user,
+      routine: routine,
+      entry: entry,
+      skin_score: skin_score
+    })
   });
 };
 

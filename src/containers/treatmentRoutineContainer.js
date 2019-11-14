@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
-import { Container, Button } from "semantic-ui-react";
+import { Loader, Container, Button } from "semantic-ui-react";
 import ProductComponent from "../components/Product";
 
 export class treatmentRoutineContainer extends Component {
@@ -33,23 +33,39 @@ export class treatmentRoutineContainer extends Component {
     this.props.history.push("/add");
   };
 
+  getProducts = () => {
+    if (this.state.user && !this.state.products) {
+      return <Loader active />;
+    } else if (
+      this.state.user &&
+      this.state.products &&
+      this.state.products.length > 0
+    ) {
+      return this.state.products.map(product => (
+        <ProductComponent
+          className="productCard"
+          handleDeleteClick={this.handleDeleteClick}
+          key={product.id}
+          product={product}
+          user={this.state.user}
+          history={this.props.history}
+          brands={this.props.brands}
+          routine={this.state.routine}
+        />
+      ));
+    } else {
+      return (
+        <div className="centered">
+          There are no products in your routine yet!
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <Container>
-        {this.state.user && this.state.products.length > 0 ? (
-          this.state.products.map(product => (
-            <ProductComponent
-              handleDeleteClick={this.handleDeleteClick}
-              key={product.id}
-              product={product}
-              user={this.state.user}
-              history={this.props.history}
-              routine={"treatment"}
-            />
-          ))
-        ) : (
-          <div>There are no products in your routine yet!</div>
-        )}
+        {this.getProducts()}
         <Button.Group basic vertical>
           <Button onClick={() => this.handleAddProductClick()}>
             add product

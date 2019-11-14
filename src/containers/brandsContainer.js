@@ -66,8 +66,8 @@ const BrandsContainer = props => {
             .find(brand => brand.id === selectedBrand)
             .products.map(product => (
               <div key={product.id}>
-                <ul>{product.name}</ul>
-                <ul>{product.product_type}</ul>
+                <ul className="selectedProductName">{product.name}</ul>
+                <ul className="selectedProductType">{product.product_type}</ul>
                 <ul className="activeIngredients">
                   {product.active_ingredients
                     .map(a_i => {
@@ -105,7 +105,9 @@ const BrandsContainer = props => {
         </Card>
       ) : null}
       {findBrands()}
-      <Button onClick={handleBackClick}>go back</Button>
+      <Button basic onClick={handleBackClick}>
+        go back
+      </Button>
     </div>
   );
 };

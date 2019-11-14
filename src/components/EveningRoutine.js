@@ -1,9 +1,12 @@
 import React from "react";
+import { Loader } from "semantic-ui-react";
 
 const EveningRoutine = props => {
   const getProducts = () => {
     return props.user.evening_products.map(product => (
-      <p key={product.id}>{product.name}</p>
+      <ul key={product.id} className="product-listing">
+        {product.name}
+      </ul>
     ));
   };
   return (
@@ -19,7 +22,7 @@ const EveningRoutine = props => {
           <div>{getProducts()}</div>
         </div>
       ) : (
-        <h1 className="main-title">Your next routine will be this evening</h1>
+        <Loader active />
       )}
       {/* {this.props.user ? API.getMorningRoutineProducts(this.props.user) : null} */}
     </div>

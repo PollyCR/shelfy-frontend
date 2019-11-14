@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MorningRoutine from "../components/MorningRoutine";
 import EveningRoutine from "../components/EveningRoutine";
-import { Button, Divider, } from "semantic-ui-react";
+import { Button, Divider } from "semantic-ui-react";
 import API from "../adapters/API";
 
 export class DashboardContainer extends Component {
@@ -25,41 +25,10 @@ export class DashboardContainer extends Component {
     return time;
   };
 
-  handleAmClick = e => {
+  handleClick = e => {
     e.persist();
     e.preventDefault();
-    console.log(e);
-    // this.props.history.push(`/${);
-  };
-
-  handleDiaryClick = e => {
-    e.persist();
-    e.preventDefault();
-    this.props.history.push("/diary");
-  };
-
-  handleListClick = e => {
-    e.persist();
-    e.preventDefault();
-    this.props.history.push("/list");
-  };
-
-  handleBrandsClick = e => {
-    e.persist();
-    e.preventDefault();
-    this.props.history.push("/brands");
-  };
-
-  handlePmClick = e => {
-    e.persist();
-    e.preventDefault();
-    this.props.history.push("/pm");
-  };
-
-  handleTreatmentClick = e => {
-    e.persist();
-    e.preventDefault();
-    this.props.history.push("/treatment");
+    this.props.history.push(`/${e.target.value}`);
   };
 
   getRoutine = () => {
@@ -79,37 +48,46 @@ export class DashboardContainer extends Component {
           <Button
             className="am-routine-button"
             value="am"
-            onClick={this.handleAmClick}
+            onClick={this.handleClick}
           >
             am
           </Button>
           <Button
             className="pm-routine-button"
             value="pm"
-            onClick={this.handlePmClick}
+            onClick={this.handleClick}
           >
             pm
           </Button>
           <Button
             className="treatment-routine-button"
             value="treatment"
-            onClick={this.handleTreatmentClick}
+            onClick={this.handleClick}
           >
             treatment
           </Button>
         </Button.Group>
         <Divider />
         <Button.Group basic vertical size="large">
-          <Button className="skin-diary-button" onClick={this.handleDiaryClick}>
+          <Button
+            className="skin-diary-button"
+            value="diary"
+            onClick={this.handleClick}
+          >
             skin diary
           </Button>
           <Button
             className="shopping-list-button"
-            onClick={this.handleListClick}
+            value="list"
+            onClick={this.handleClick}
           >
             shopping list
           </Button>
-          <Button className="brands-button" onClick={this.handleBrandsClick}>
+          <Button
+            className="brands-button"
+            value="brands"
+            onClick={this.handleClick}
+          >
             all brands
           </Button>
         </Button.Group>{" "}

@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { Loader } from "semantic-ui-react";
+import API from "../adapters/API";
 
 export class MorningRoutine extends Component {
   getProducts = () => {
     return this.props.user.morning_products.map(product => (
-      <p>{product.name}</p>
+      <ul key={product.id} className="product-listing">
+        {product.name}
+      </ul>
     ));
   };
   render() {
@@ -21,7 +25,7 @@ export class MorningRoutine extends Component {
             <div>{this.getProducts()}</div>
           </div>
         ) : (
-          <h1 className="main-title">Good morning!</h1>
+          <Loader active />
         )}
         {/* {this.props.user ? API.getMorningRoutineProducts(this.props.user) : null} */}
       </div>

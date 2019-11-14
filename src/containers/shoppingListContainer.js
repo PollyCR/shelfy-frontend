@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import API from "../adapters/API";
 import ShoppingListProduct from "../components/ShoppingListProduct";
-import { Button } from "semantic-ui-react";
+import { Button, Loader } from "semantic-ui-react";
 
 export class ShoppingListContainer extends Component {
-  state = { list_products: [],
-  products: [] };
-
+  state = { list_products: [], products: [] };
 
   componentDidMount = () => {
     if (this.props.user) {
@@ -24,19 +22,21 @@ export class ShoppingListContainer extends Component {
       <div>
         <h1>Shopping List</h1>
 
-        {this.props.user && this.state.list_products
-          ? this.state.list_products.map(lp => (
-              <ShoppingListProduct
-              key = {lp.id}
-                history={this.props.history}
-                list_product = {lp}
-                user={this.props.user}
-                product={this.props.products.find(
-                  product => product.id === lp.product_id
-                )}
-              />
-            ))
-          : null}
+        {this.props.user && this.state.list_products ? (
+          this.state.list_products.map(lp => (
+            <ShoppingListProduct
+              key={lp.id}
+              history={this.props.history}
+              list_product={lp}
+              user={this.props.user}
+              product={this.props.products.find(
+                product => product.id === lp.product_id
+              )}
+            />
+          ))
+        ) : (
+          <Loader active />
+        )}
         <Button onClick={this.handleBackClick}>Go back</Button>
       </div>
     );
