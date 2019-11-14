@@ -106,14 +106,14 @@ html {
 
 .logo {
   margin-top: 0.4em !important;
-  font-weight: 900;
+  font-weight: 500;
   font-style: italic;
   font-size: 3rem;
   font-family: "didot";
 }
 .strapline {
   font-weight: 400;
-  margin-top: -1.5rem;
+  margin-top: -1rem;
 }
 .main-title {
   margin: 3%;
