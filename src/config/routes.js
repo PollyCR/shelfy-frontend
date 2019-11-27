@@ -18,7 +18,7 @@ export const routes = [
     component: AddBrandProductContainer
   },
   { title: "Skin diary", path: "/diary", component: SkinDiaryContainer },
-  { title: "List", path: "/list", compsonent: ShoppingListContainer },
+  { title: "List", path: "/list", component: ShoppingListContainer },
   { title: "Brands you ♥️", path: "/brands", component: brandsContainer },
   { title: "Morning Routine", path: "/am", component: AMRoutineContainer },
 
