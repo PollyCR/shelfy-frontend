@@ -1,4 +1,4 @@
-import SignupForm from "../Components/SignupForm";
+import SignupForm from "./../Components/SignupForm";
 import WelcomeContainer from "../Containers/WelcomeContainer";
 import DashboardContainer from "../Containers/DashboardContainer";
 import AMRoutineContainer from "../Containers/amRoutineContainer";
