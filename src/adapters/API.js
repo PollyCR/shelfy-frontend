@@ -15,8 +15,8 @@ const ROUTINES_URL = `${BASE_URL}api/v1/routines`;
 
 const headers = (more = {}) => ({
   "Content-Type": "application/json",
-  Accept: "application/json",
   "Access-Control-Allow-Origin": "https://shelfy.netlify.com",
+  Accept: "application/json",
   ...more
 });
 const authHeader = (more = {}) => ({
