@@ -54,7 +54,7 @@ export class DashboardContainer extends Component {
   render() {
     return (
       <div>
-        <Divider />
+        <Divider hidden />
         <div>{this.getRoutine()}</div>
         <Button.Group basic vertical size="large">
           <Button

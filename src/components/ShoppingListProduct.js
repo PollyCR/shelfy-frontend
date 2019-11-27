@@ -4,9 +4,9 @@ import API from "../adapters/API";
 
 export class ShoppingListProduct extends Component {
   handleDeleteClick = () => {
-    API.deleteListProduct(this.props.list_product.id).then(() => {
-      this.props.history.push("/list");
-    });
+    API.deleteListProduct(this.props.list_product.id).then(() =>
+      this.props.setUserState().then(() => this.props.history.push("/list"))
+    );
   };
 
   render() {

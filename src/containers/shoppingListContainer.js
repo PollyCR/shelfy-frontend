@@ -11,9 +11,12 @@ export class ShoppingListContainer extends Component {
       <div>
         <h1 className="main-title">shopping list</h1>
 
-        {this.props.user && this.props.user.list_products ? (
+        {this.props.user &&
+        this.props.user.list_products &&
+        this.props.user.list_products.length > 0 ? (
           this.props.user.list_products.map(lp => (
             <ShoppingListProduct
+              setUserState={this.props.setUserState}
               className="product-card"
               key={lp.id}
               history={this.props.history}
@@ -25,7 +28,11 @@ export class ShoppingListContainer extends Component {
             />
           ))
         ) : (
-          <Loader active />
+          <>
+            No products yet!
+            <br />
+            <Loader active />
+          </>
         )}
         <Button basic color="grey" onClick={this.handleBackClick}>
           go back

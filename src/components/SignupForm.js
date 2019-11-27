@@ -30,14 +30,14 @@ export class SignupForm extends Component {
         onSubmit={this.submit}
         onChange={e => this.handleInputChange(e.target.name, e.target.value)}
       >
-        <h1 class="main-title">welcome to Shelfy!</h1>
+        <h1 className="main-title">welcome to Shelfy!</h1>
         <br />
-        <p class="sign-up-rules">
+        <p className="sign-up-rules">
           when you sign up, please make sure that:
-          <li class="sign-up-rules-li">
+          <li className="sign-up-rules-li">
             you submit a valid, unique email address
           </li>
-          <li class="sign-up-rules-li">
+          <li className="sign-up-rules-li">
             your password is eight characters or longer
           </li>
         </p>

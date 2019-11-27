@@ -90,7 +90,7 @@ class SkinDiaryContainer extends Component {
                   </Accordion.Content>
                 </>
               ))
-            : null}
+            : "No entries yet!"}
         </Accordion>
         <br />{" "}
         <Button basic onClick={this.handleBackClick}>

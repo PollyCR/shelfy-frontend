@@ -5,7 +5,7 @@ import API from "../adapters/API";
 export class Product extends Component {
   handleListClick = () => {
     API.addListProduct(this.props.user.id, this.props.product.id)
-      .then(() => API.getUser())
+      .then(() => API.getUser(this.props.user.id))
       .then(this.props.history.push("/list"));
     // .then(() => {API.getRoutine()})
   };

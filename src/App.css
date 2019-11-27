@@ -56,18 +56,18 @@ html {
   font-style: italic;
   margin: 1% !important;
   min-width: 10em;
+  max-width: 10em;
   color: #707070 !important;
   border: 0.01em solid #707070 !important;
 }
 
 .ui.vertical.buttons > .button::hover {
   font-family: source-code-pro, monospace;
-
   font-weight: 400;
-
   font-style: normal;
   margin: 1% !important;
-  min-width: 10em;
+  min-width: 10em !important;
+  max-width: 10em !important;
   color: #707070 !important;
   border: 0.01em solid #707070 !important;
 }
