@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import MorningRoutine from "./Components/MorningRoutine";
-import EveningRoutine from "./Components/EveningRoutine";
+import MorningRoutine from "./MorningRoutine";
+import EveningRoutine from "./EveningRoutine";
 import { Button, Divider } from "semantic-ui-react";
 import API from "./adapters/API";
 

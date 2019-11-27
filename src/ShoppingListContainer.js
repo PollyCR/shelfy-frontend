@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ShoppingListProduct from "./Components/ShoppingListProduct";
+import ShoppingListProduct from "./ShoppingListProduct";
 import { Button, Loader } from "semantic-ui-react";
 
 export class ShoppingListContainer extends Component {

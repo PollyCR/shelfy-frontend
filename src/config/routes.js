@@ -1,5 +1,5 @@
 import TreatmentRoutineContainer from "../treatmentRoutineContainer";
-import SignupForm from "../Components/SignupForm";
+import SignupForm from "../SignupForm";
 import WelcomeContainer from "../WelcomeContainer";
 import DashboardContainer from "../DashboardContainer";
 import AMRoutineContainer from "../amRoutineContainer";
@@ -7,7 +7,7 @@ import pmRoutineContainer from "../pmRoutineContainer";
 import SkinDiaryContainer from "../SkinDiaryContainer";
 import brandsContainer from "../brandsContainer";
 import ShoppingListContainer from "../ShoppingListContainer";
-import SigninForm from "../Components/SigninForm";
+import SigninForm from "../SigninForm";
 import AddProductContainer from "../AddProductContainer";
 import AddBrandProductContainer from "../AddBrandProductContainer";
 

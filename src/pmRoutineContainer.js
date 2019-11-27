@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "./adapters/API";
 import { Button, Loader, Container } from "semantic-ui-react";
-import ProductComponent from "./Components/Product";
+import ProductComponent from "./Product";
 
 export class pmRoutineContainer extends Component {
   state = {

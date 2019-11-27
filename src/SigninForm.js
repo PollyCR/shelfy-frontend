@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button } from "semantic-ui-react";
-import API from "../adapters/API";
+import API from "./adapters/API";
 
 export class SigninForm extends Component {
   state = {
