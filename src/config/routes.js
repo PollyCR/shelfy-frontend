@@ -1,4 +1,3 @@
-import LoginForm from "../Components/LoginForm";
 import SignupForm from "../Components/SignupForm";
 import WelcomeContainer from "../Containers/WelcomeContainer";
 import DashboardContainer from "../Containers/DashboardContainer";
@@ -8,6 +7,7 @@ import TreatmentRoutineContainer from "../Containers/treatmentRoutineContainer";
 import SkinDiaryContainer from "../Containers/SkinDiaryContainer";
 import brandsContainer from "../Containers/brandsContainer";
 import ShoppingListContainer from "../Containers/ShoppingListContainer";
+import SigninForm from "../Components/SigninForm";
 import AddProductContainer from "../Containers/AddProductContainer";
 import AddBrandProductContainer from "../Containers/AddBrandProductContainer";
 
@@ -38,7 +38,7 @@ export const routes = [
   {
     title: "Log in",
     path: "/login",
-    component: LoginForm
+    component: SigninForm
   },
   {
     title: "Sign up",

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
-class LoginForm extends React.Component {
+export class SigninForm extends Component {
   state = {
     email: "",
     password: "",
@@ -59,4 +59,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default SigninForm;
