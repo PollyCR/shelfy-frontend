@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import API from "../adapters/API";
-import { Button, Loader, Container } from "semantic-ui-react";
-import ProductComponent from "../Components/Product";
+import API from "./adapters/API";
+import { Button, Container, Loader } from "semantic-ui-react";
+import ProductComponent from "./Components/Product";
 
-export class pmRoutineContainer extends Component {
+export class amRoutineContainer extends Component {
   state = {
     user: null,
     products: [],
-    routine: "pm"
+    routine: "am"
   };
   componentDidMount = () => {
     this.getRoutine();
@@ -21,13 +21,13 @@ export class pmRoutineContainer extends Component {
     if (this.props.user) {
       API.getUser(this.props.user.id).then(data => {
         // console.log(data);
-        this.setState({ user: data, products: data.evening_products });
+        this.setState({ user: data, products: data.morning_products });
       });
     }
   };
 
   handleBackClick = () => {
-    this.props.setUserState().then(() => this.props.history.push("/dashboard"));
+    API.getUser(this.props.user.id).then(this.props.history.push("/dashboard"));
   };
 
   handleAddProductClick = () => {
@@ -44,8 +44,8 @@ export class pmRoutineContainer extends Component {
     ) {
       return this.state.products.map(product => (
         <ProductComponent
-          className="productCard"
           setProducts={this.props.setProducts}
+          className="productCard"
           handleDeleteClick={this.handleDeleteClick}
           key={product.id}
           product={product}
@@ -79,4 +79,4 @@ export class pmRoutineContainer extends Component {
   }
 }
 
-export default pmRoutineContainer;
+export default amRoutineContainer;

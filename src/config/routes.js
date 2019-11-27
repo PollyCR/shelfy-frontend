@@ -1,15 +1,15 @@
 import TreatmentRoutineContainer from "../treatmentRoutineContainer";
 import SignupForm from "../Components/SignupForm";
-import WelcomeContainer from "../Containers/WelcomeContainer";
-import DashboardContainer from "../Containers/DashboardContainer";
-import AMRoutineContainer from "../Containers/amRoutineContainer";
-import pmRoutineContainer from "../Containers/pmRoutineContainer";
-import SkinDiaryContainer from "../Containers/SkinDiaryContainer";
-import brandsContainer from "../Containers/brandsContainer";
-import ShoppingListContainer from "../Containers/ShoppingListContainer";
+import WelcomeContainer from "../WelcomeContainer";
+import DashboardContainer from "../DashboardContainer";
+import AMRoutineContainer from "../amRoutineContainer";
+import pmRoutineContainer from "../pmRoutineContainer";
+import SkinDiaryContainer from "../SkinDiaryContainer";
+import brandsContainer from "../brandsContainer";
+import ShoppingListContainer from "../ShoppingListContainer";
 import SigninForm from "../Components/SigninForm";
-import AddProductContainer from "../Containers/AddProductContainer";
-import AddBrandProductContainer from "../Containers/AddBrandProductContainer";
+import AddProductContainer from "../AddProductContainer";
+import AddBrandProductContainer from "../AddBrandProductContainer";
 
 export const routes = [
   {

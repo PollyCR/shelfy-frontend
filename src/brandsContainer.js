@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API from "../adapters/API";
+import API from "./adapters/API";
 import { Card, Placeholder, Button } from "semantic-ui-react";
 
 const BrandsContainer = props => {

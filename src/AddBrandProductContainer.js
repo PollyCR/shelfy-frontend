@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../adapters/API";
+import API from "./adapters/API";
 import { Form, Button } from "semantic-ui-react";
 
 export class AddBrandProductContainer extends Component {

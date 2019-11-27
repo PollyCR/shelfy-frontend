@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../adapters/API";
+import API from "./adapters/API";
 import { Button, Loader, Accordion } from "semantic-ui-react";
 import AddDiaryEntryContainer from "./AddDiaryEntryContainer";
 

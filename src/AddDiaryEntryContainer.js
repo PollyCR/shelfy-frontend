@@ -1,5 +1,5 @@
 import { Button, TextArea, Form } from "semantic-ui-react";
-import API from "../adapters/API";
+import API from "./adapters/API";
 import React, { Component } from "react";
 
 export class AddDiaryEntryContainer extends Component {
