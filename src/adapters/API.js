@@ -1,4 +1,5 @@
-const BASE_URL = "https://shelfy-backend.netlify.com/";
+const BASE_URL =
+  "https://cors-anywhere.herokuapp.com/https://shelfy-backend.netlify.com/";
 
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
