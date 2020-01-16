@@ -1,4 +1,4 @@
-const BASE_URL = "https://shelfy-backend.herokuapp.com/";
+const BASE_URL = "https://shelfy-backend.netlify.com";
 
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
@@ -35,14 +35,11 @@ const getProducts = () => {
 };
 
 const getRoutine = (user, type) => {
-  // console.log(user)
-  // console.log(type)
   return fetch(ROUTINES_URL, {
     method: "POST",
     headers: headers(authHeader()),
     body: JSON.stringify({ routine: { user_id: user.id, routine_type: type } })
   }).then(resp => resp.json());
-  // .then(console.log);
 };
 
 const handleServerResponse = res => {
@@ -57,7 +54,7 @@ const handleServerResponse = res => {
   } else if (res.status === 503) {
     return { code: 503 };
   } else if (res.status === 500) {
-    return { code: 500, error: "IDEK what is going on " };
+    return { code: 500 };
   } else {
     return res.text().then(text => {
       try {
