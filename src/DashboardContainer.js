@@ -5,13 +5,9 @@ import { Button, Divider } from "semantic-ui-react";
 import API from "./adapters/API";
 
 export class DashboardContainer extends Component {
-  state = {
-    routine: null
-  };
-
   componentDidMount = () => {
     API.validateUser().then(user => {
-      this.setState({ user });
+      this.setState({ user, routine: null });
       // console.log(user)
       if (user && user.errors) {
         this.props.history.push("/welcome");

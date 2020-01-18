@@ -4,13 +4,10 @@ import { Button, Loader, Accordion } from "semantic-ui-react";
 import AddDiaryEntryContainer from "./AddDiaryEntryContainer";
 
 class SkinDiaryContainer extends Component {
-  state = {
-    activeIndex: 0
-  };
   componentDidMount = () => {
     API.validateUser().then(() => {
       API.getDiary(this.props.user).then(data => {
-        this.setState({ diary: data });
+        this.setState({ diary: data, activeIndex: 0 });
       });
     });
   };
