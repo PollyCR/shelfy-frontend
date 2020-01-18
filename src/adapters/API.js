@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "https://shelfy-backend.netlify.com";
 
 const LOGIN_URL = `${BASE_URL}api/v1/login`;
 const SIGNUP_URL = `${BASE_URL}api/v1/signup`;
