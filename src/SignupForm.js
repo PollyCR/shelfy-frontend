@@ -3,10 +3,8 @@ import { Form, Button } from "semantic-ui-react";
 import API from "./adapters/API";
 
 export class SignupForm extends Component {
-  state = {
-    display_name: "",
-    email_address: "",
-    password: ""
+  componentDidMount = () => {
+    this.setState({ display_name: "", email_address: "", password: "" });
   };
 
   handleInputChange = (key, value) => {
