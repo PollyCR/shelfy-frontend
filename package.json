@@ -5,7 +5,7 @@
   "dependencies": {
     "@cogent-labs/react-rating-component": "^1.1.0",
     "gulp": "^4.0.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prismic-reactjs": "^1.1.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
